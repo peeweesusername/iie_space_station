@@ -28,7 +28,7 @@ class SpaceStationGame extends Forge2DGame with HasDraggables, TapDetector {
     baseStationPosition = Vector2(gameSize.x / 2, gameSize.y / 2);
     theStation = BaseStation(
         position: baseStationPosition,
-        radius: baseStationRadius,
+        size: baseStationSize,
         linearVelocity: Vector2.zero()
     );
     add(theStation);
