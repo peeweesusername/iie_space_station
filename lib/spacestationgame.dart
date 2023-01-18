@@ -27,6 +27,7 @@ class SpaceStationGame extends Forge2DGame with HasDraggables, TapDetector {
     //await FlameAudio.audioCache.load('charge.mp3');
     //await FlameAudio.audioCache.load('score_air_horn.mp3');
     await Flame.images.load('base_station.png');
+    await Flame.images.load('direction_paddles.png');
     baseStationPosition = Vector2(gameSize.x / 2, gameSize.y / 2);
     theStation = BaseStation(
         position: baseStationPosition,

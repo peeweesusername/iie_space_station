@@ -69,6 +69,7 @@ flutter:
   assets:
     - assets/images/StarfieldSimulation.gif
     - assets/images/base_station.png
+    - assets/images/direction_paddles.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
