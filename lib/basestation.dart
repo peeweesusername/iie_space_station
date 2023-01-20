@@ -12,22 +12,21 @@ import 'package:iie_space_station/spacestationgame.dart';
 
 class BaseStation extends BodyComponent {
   double radius;
-  Vector2 position;
-  Vector2 linearVelocity;
+  Vector2 gameSize;
 
-  BaseStation({required this.position, required this.radius, required this.linearVelocity});
+  BaseStation({required this.gameSize, required this.radius});
 
-  late SpaceStationGame parentGame = findParent() as SpaceStationGame;
   late SpriteComponent baseStationSprite;
 
   @override
   Body createBody() {
+    Vector2 baseStationPosition = Vector2(gameSize.x / 2, gameSize.y / 2);
     //Add Sprite with image of space station/gun turret
     Image baseStationImage = Flame.images.fromCache('base_station.png');
     baseStationSprite = (SpriteComponent.fromImage(
       baseStationImage,
       anchor: Anchor.center,
-      size: Vector2(radius*turretScale, radius*turretScale),
+      size: Vector2(radius*baseStationScale, radius*baseStationScale),
       )
     );
     add(baseStationSprite);
@@ -38,7 +37,7 @@ class BaseStation extends BodyComponent {
     setColor (const Color(0xFF41FF00));
     final mycontact = baseStationCallback(baseStation: this);
     final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
-    final bodyDef = BodyDef(position: position, linearVelocity: linearVelocity, type: BodyType.dynamic, userData: mycontact);
+    final bodyDef = BodyDef(position: baseStationPosition, linearVelocity: Vector2.zero(), type: BodyType.dynamic, userData: mycontact);
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 

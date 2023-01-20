@@ -6,15 +6,16 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/basestation.dart';
+import 'package:iie_space_station/directionbutton.dart';
 
-class SpaceStationGame extends Forge2DGame with HasDraggables, TapDetector {
+class SpaceStationGame extends Forge2DGame with TapDetector {
   //Needed to eliminate gravity vector
   SpaceStationGame() : super(gravity: Vector2(0, 0));
 
   late Body gameBody;
   late Vector2 gameSize;
-  Vector2 baseStationPosition = Vector2.zero();
   late BaseStation theStation;
+  late DirectionButton theDirectionButton;
 
   late Function() NewGame;
 
@@ -27,16 +28,20 @@ class SpaceStationGame extends Forge2DGame with HasDraggables, TapDetector {
     //await FlameAudio.audioCache.load('charge.mp3');
     //await FlameAudio.audioCache.load('score_air_horn.mp3');
     await Flame.images.load('base_station.png');
-    await Flame.images.load('direction_paddles.png');
-    baseStationPosition = Vector2(gameSize.x / 2, gameSize.y / 2);
+    await Flame.images.load('direction_button.png');
+
     theStation = BaseStation(
-        position: baseStationPosition,
-        radius: baseStationSize,
-        linearVelocity: Vector2.zero()
+        gameSize: gameSize,
+        radius: baseStationSize
     );
     add(theStation);
-    //add(component1);
-    //add(component2);
+
+    theDirectionButton = DirectionButton(
+        gameSize: gameSize,
+        radius: directionButtonSize
+    );
+    add(theDirectionButton);
+
     //overlays.add('FaceoffMenu');
   }
 
@@ -46,7 +51,7 @@ class SpaceStationGame extends Forge2DGame with HasDraggables, TapDetector {
 
   @override
   void onTap() {
-    print("tapped");
+    print("game tapped");
     theStation.rotate(45);
     /*
     if (paused) {
