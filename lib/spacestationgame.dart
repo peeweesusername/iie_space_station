@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
@@ -8,7 +7,7 @@ import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/basestation.dart';
 import 'package:iie_space_station/directionbutton.dart';
 
-class SpaceStationGame extends Forge2DGame with TapDetector {
+class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
   SpaceStationGame() : super(gravity: Vector2(0, 0));
 
@@ -50,15 +49,10 @@ class SpaceStationGame extends Forge2DGame with TapDetector {
   }
 
   @override
-  void onTap() {
-    print("game tapped");
-    theStation.rotate(45);
-    /*
-    if (paused) {
-      resumeEngine();
-    } else {
-      pauseEngine();
+  void onTapDown(int pointerId, TapDownInfo info) {
+    super.onTapDown(pointerId, info);
+    if (!info.handled) {
+      print('game handles tapdown');
     }
-     */
   }
 }

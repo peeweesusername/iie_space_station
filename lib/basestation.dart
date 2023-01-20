@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'dart:ui';
+import 'package:flame/events.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
@@ -8,7 +9,6 @@ import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/contacthandlers.dart';
-import 'package:iie_space_station/spacestationgame.dart';
 
 class BaseStation extends BodyComponent {
   double radius;
@@ -44,4 +44,5 @@ class BaseStation extends BodyComponent {
   void rotate(double angle) {
     baseStationSprite.angle += angle*math.pi/180.0;
   }
+
 }
