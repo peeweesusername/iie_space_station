@@ -23,12 +23,11 @@ class BaseStation extends BodyComponent {
     Vector2 baseStationPosition = Vector2(gameSize.x / 2, gameSize.y / 2);
     //Add Sprite with image of space station/gun turret
     Image baseStationImage = Flame.images.fromCache('base_station.png');
-    baseStationSprite = (SpriteComponent.fromImage(
-      baseStationImage,
-      anchor: Anchor.center,
-      size: Vector2(radius*baseStationScale, radius*baseStationScale),
-      )
-    );
+    baseStationSprite = SpriteComponent.fromImage(
+        baseStationImage,
+        anchor: Anchor.center,
+        size: Vector2(radius*baseStationScale, radius*baseStationScale),
+      );
     add(baseStationSprite);
 
     final shape = CircleShape();
