@@ -1,13 +1,12 @@
-import 'dart:math' as math;
-import 'dart:ui';
 import 'package:flame/events.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame/flame.dart';
-import 'package:flame/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:iie_space_station/angles.dart';
+import 'package:iie_space_station/basestation.dart';
 
-class DirectionButton extends BodyComponent with Tappable{
+class DirectionButton extends BodyComponent with Tappable {
   double radius;
   Vector2 gameSize;
 
@@ -46,22 +45,18 @@ class DirectionButton extends BodyComponent with Tappable{
   bool onTapDown(TapDownInfo info) {
     double x = info.eventPosition.game.x - directionButtonPosition.x;
     double y = directionButtonPosition.y - info.eventPosition.game.y;
-    print ('direction button handles tapdown');
-    print (x);
-    print (y);
-    /*
-      X & Y > 0: NE
-      X > 0, Y < 0: SE
-      X & Y < 0 : SW
-      X < 0, Y > 0: NW
-    */
+    Direction_E d = determineQuadrant(x,y);
+    double a = computeStationAngle(d, gameSize);
+    final baseStation = gameRef.children.singleWhere((child) => child is BaseStation) as BaseStation;
+    baseStation.rotate2(a);
+
     info.handled = true;
     return true;
   }
 }
 
-//This no worky
-class DirectionButtonSprite extends SpriteComponent with HasGameRef {
+/*This no worky
+class DirectionButtonSprite extends SpriteComponent with Tappable, HasGameRef {
   double radius;
   Vector2 gameSize;
 
@@ -80,3 +75,4 @@ class DirectionButtonSprite extends SpriteComponent with HasGameRef {
     print(sprite.toString());
   }
 }
+*/

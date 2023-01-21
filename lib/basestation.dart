@@ -1,10 +1,5 @@
-import 'dart:math' as math;
-import 'dart:ui';
-import 'package:flame/events.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame/flame.dart';
-import 'package:flame/game.dart';
-import 'package:flutter/material.dart' hide Image;
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
@@ -34,14 +29,21 @@ class BaseStation extends BodyComponent {
     shape.radius = radius;
     //Attempt to create phosphor green of Apple IIe monitor
     setColor (const Color(0xFF41FF00));
+
     final mycontact = baseStationCallback(baseStation: this);
     final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
     final bodyDef = BodyDef(position: baseStationPosition, linearVelocity: Vector2.zero(), type: BodyType.dynamic, userData: mycontact);
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 
-  void rotate(double angle) {
-    baseStationSprite.angle += angle*math.pi/180.0;
+  //Argument angle is in radians
+  void rotateby(double angle) {
+    baseStationSprite.angle += angle;
+  }
+
+  //Argument angle is in radians
+  void rotate2(double angle) {
+    baseStationSprite.angle = angle;
   }
 
 }
