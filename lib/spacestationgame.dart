@@ -6,6 +6,7 @@ import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/basestation.dart';
 import 'package:iie_space_station/directionbutton.dart';
+import 'package:iie_space_station/firebutton.dart';
 
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
@@ -15,6 +16,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late Vector2 gameSize;
   late BaseStation theStation;
   late DirectionButton theDirectionButton;
+  late FireButton theFireButton;
 
   late Function() NewGame;
 
@@ -28,6 +30,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     //await FlameAudio.audioCache.load('score_air_horn.mp3');
     await Flame.images.load('base_station.png');
     await Flame.images.load('direction_button.png');
+    await Flame.images.load('fire_button.png');
 
     theStation = BaseStation(
         gameSize: gameSize,
@@ -40,6 +43,12 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
         radius: directionButtonSize
     );
     add(theDirectionButton);
+
+    theFireButton = FireButton(
+        gameSize: gameSize,
+        radius: fireButtonSize
+    );
+    add(theFireButton);
 
     //overlays.add('FaceoffMenu');
   }
