@@ -4,7 +4,7 @@ import 'package:flame/flame.dart';
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
-import 'package:iie_space_station/basestation.dart';
+import 'package:iie_space_station/spacestationgame.dart';
 
 class DirectionButton extends BodyComponent with Tappable {
   double radius;
@@ -27,8 +27,6 @@ class DirectionButton extends BodyComponent with Tappable {
 
     double xpos = gameSize.x - ((directionButtonSprite.size.x) / 2);
     directionButtonPosition = Vector2(xpos, gameSize.y / 2);
-    print(directionButtonPosition.toString());
-
     add(directionButtonSprite);
 
     final shape = CircleShape();
@@ -47,9 +45,7 @@ class DirectionButton extends BodyComponent with Tappable {
     double y = directionButtonPosition.y - info.eventPosition.game.y;
     Direction_E d = determineQuadrant(x,y);
     double a = computeStationAngle(d, gameSize);
-    final baseStation = gameRef.children.singleWhere((child) => child is BaseStation) as BaseStation;
-    baseStation.rotate2(a);
-
+    (gameRef as SpaceStationGame).theStation.rotate2(a);
     info.handled = true;
     return true;
   }

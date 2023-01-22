@@ -25,8 +25,6 @@ class FireButton extends BodyComponent with Tappable {
 
     double xpos = ((fireButtonSprite.size.x) / 2);
     fireButtonPosition = Vector2(xpos, gameSize.y / 2);
-    print(fireButtonPosition.toString());
-
     add(fireButtonSprite);
 
     final shape = CircleShape();
@@ -42,7 +40,6 @@ class FireButton extends BodyComponent with Tappable {
   @override
   bool onTapDown(TapDownInfo info) {
     print('firebutton handles tapdown');
-
     info.handled = true;
     return true;
   }
