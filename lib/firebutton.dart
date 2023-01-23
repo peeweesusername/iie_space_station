@@ -1,8 +1,5 @@
 import 'package:flame/events.dart';
-import 'package:flame/extensions.dart';
-import 'package:flame/flame.dart';
 import 'package:flame/components.dart';
-import 'package:flame_forge2d/flame_forge2d.dart';
 
 class FireButtonSprite extends SpriteComponent with Tappable, HasGameRef {
   double radius;
