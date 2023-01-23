@@ -26,8 +26,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     camera.zoom = camera.zoom * myZoomFactor;
     gameSize = screenToWorld(camera.viewport.effectiveSize);
     gameBody = world.createBody(BodyDef());
-    //await FlameAudio.audioCache.load('charge.mp3');
-    //await FlameAudio.audioCache.load('score_air_horn.mp3');
+    await FlameAudio.audioCache.load('laser_bolt.mp3');
     await Flame.images.load('base_station.png');
     await Flame.images.load('direction_button.png');
     await Flame.images.load('fire_button.png');

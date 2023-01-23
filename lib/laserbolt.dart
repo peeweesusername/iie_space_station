@@ -2,6 +2,7 @@ import 'dart:math' as math;
 import 'package:flame/extensions.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/spacestationgame.dart';
@@ -53,6 +54,7 @@ class LaserBolt extends BodyComponent {
         fixedRotation: true,
         userData: mycontact
     );
+    FlameAudio.play('laser_bolt.mp3');
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 }
