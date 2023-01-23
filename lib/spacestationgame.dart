@@ -31,6 +31,8 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     await Flame.images.load('base_station.png');
     await Flame.images.load('direction_button.png');
     await Flame.images.load('fire_button.png');
+    await Flame.images.load('green_laser_bolt.png');
+    await Flame.images.load('red_laser_bolt.png');
 
     theStation = BaseStation(
         gameSize: gameSize,

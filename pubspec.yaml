@@ -71,6 +71,8 @@ flutter:
     - assets/images/base_station.png
     - assets/images/direction_button.png
     - assets/images/fire_button.png
+    - assets/images/green_laser_bolt.png
+    - assets/images/red_laser_bolt.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

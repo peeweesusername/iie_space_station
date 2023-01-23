@@ -1,5 +1,8 @@
 import 'package:flame/events.dart';
 import 'package:flame/components.dart';
+import 'package:iie_space_station/globals.dart';
+import 'package:iie_space_station/laserbolt.dart';
+import 'package:iie_space_station/spacestationgame.dart';
 
 class FireButtonSprite extends SpriteComponent with Tappable, HasGameRef {
   double radius;
@@ -19,7 +22,16 @@ class FireButtonSprite extends SpriteComponent with Tappable, HasGameRef {
 
   @override
   bool onTapDown(TapDownInfo info) {
-    print('firebutton handles tapdown');
+    double a = (gameRef as SpaceStationGame).theStation.baseStationSprite.angle;
+    double gunLen = (gameRef as SpaceStationGame).theStation.radius;
+    Vector2 c = (gameRef as SpaceStationGame).theStation.center;
+    LaserBolt lb = LaserBolt(
+        l: laserBoltL,
+        w: laserBoltW,
+        a: a,
+        gl: gunLen,
+        originCenter: c);
+    (gameRef as SpaceStationGame).add(lb);
     info.handled = true;
     return true;
   }
