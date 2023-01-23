@@ -4,6 +4,7 @@ import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
+import 'package:iie_space_station/edges.dart';
 import 'package:iie_space_station/basestation.dart';
 import 'package:iie_space_station/directionbutton.dart';
 import 'package:iie_space_station/firebutton.dart';
@@ -32,6 +33,8 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     await Flame.images.load('fire_button.png');
     await Flame.images.load('green_laser_bolt.png');
     await Flame.images.load('red_laser_bolt.png');
+
+    add(Edges(gameSize: gameSize));
 
     theStation = BaseStation(
         gameSize: gameSize,
