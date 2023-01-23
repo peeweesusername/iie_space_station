@@ -15,8 +15,8 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late Body gameBody;
   late Vector2 gameSize;
   late BaseStation theStation;
-  late DirectionButton theDirectionButton;
-  late FireButton theFireButton;
+  late DirectionButtonSprite theDirectionButtonSprite;
+  late FireButtonSprite theFireButtonSprite;
 
   late Function() NewGame;
 
@@ -38,17 +38,17 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     );
     add(theStation);
 
-    theDirectionButton = DirectionButton(
-        gameSize: gameSize,
-        radius: directionButtonSize
-    );
-    add(theDirectionButton);
-
-    theFireButton = FireButton(
+    theFireButtonSprite = FireButtonSprite(
         gameSize: gameSize,
         radius: fireButtonSize
     );
-    add(theFireButton);
+    add(theFireButtonSprite);
+
+    theDirectionButtonSprite = DirectionButtonSprite(
+        gameSize: gameSize,
+        radius: directionButtonSize
+    );
+    add(theDirectionButtonSprite);
 
     //overlays.add('FaceoffMenu');
   }

@@ -1,57 +1,8 @@
 import 'package:flame/events.dart';
-import 'package:flame/extensions.dart';
-import 'package:flame/flame.dart';
 import 'package:flame/components.dart';
-import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
 import 'package:iie_space_station/spacestationgame.dart';
 
-class DirectionButton extends BodyComponent with Tappable {
-  double radius;
-  Vector2 gameSize;
-
-  DirectionButton({required this.gameSize, required this.radius});
-
-  late SpriteComponent directionButtonSprite;
-  late Vector2 directionButtonPosition;
-
-  @override
-  Body createBody() {
-    //Add Sprite with image of space direction button
-    Image baseStationImage = Flame.images.fromCache('direction_button.png');
-    directionButtonSprite = SpriteComponent.fromImage(
-        baseStationImage,
-        anchor: Anchor.center,
-        size: Vector2(radius, radius),
-      );
-
-    double xpos = gameSize.x - ((directionButtonSprite.size.x) / 2);
-    directionButtonPosition = Vector2(xpos, gameSize.y / 2);
-    add(directionButtonSprite);
-
-    final shape = CircleShape();
-    shape.radius = radius/2;
-    setColor (const Color(0x00000000));
-
-    final bodyDef = BodyDef(position: directionButtonPosition, linearVelocity: Vector2.zero(), type: BodyType.static);
-    final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
-
-    return world.createBody(bodyDef)..createFixture(fixtureDef);
-  }
-
-  @override
-  bool onTapDown(TapDownInfo info) {
-    double x = info.eventPosition.game.x - directionButtonPosition.x;
-    double y = directionButtonPosition.y - info.eventPosition.game.y;
-    Direction_E d = determineQuadrant(x,y);
-    double a = computeStationAngle(d, gameSize);
-    (gameRef as SpaceStationGame).theStation.rotate2(a);
-    info.handled = true;
-    return true;
-  }
-}
-
-/*This no worky
 class DirectionButtonSprite extends SpriteComponent with Tappable, HasGameRef {
   double radius;
   Vector2 gameSize;
@@ -61,14 +12,21 @@ class DirectionButtonSprite extends SpriteComponent with Tappable, HasGameRef {
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    final Image baseStationImage = Flame.images.fromCache('direction_button.png');
-    //sprite = await gameRef.loadSprite('direction_button.png');
-    sprite = Sprite(baseStationImage);
-    //position = Vector2(gameSize.x / 2, gameSize.y / 2);
-    position = Vector2(gameRef.size.x/2, gameRef.size.y/2);
+    sprite = await gameRef.loadSprite('direction_button.png');
+    size = Vector2(radius,radius);
+    double xpos = gameSize.x - (size.x / 2);
+    position = Vector2(xpos, gameSize.y / 2);
     anchor = Anchor.center;
-    print("loading direction button");
-    print(sprite.toString());
+  }
+
+  @override
+  bool onTapDown(TapDownInfo info) {
+    double x = info.eventPosition.game.x - position.x;
+    double y = position.y - info.eventPosition.game.y;
+    Direction_E d = determineQuadrant(x,y);
+    double a = computeStationAngle(d, gameSize);
+    (gameRef as SpaceStationGame).theStation.rotate2(a);
+    info.handled = true;
+    return true;
   }
 }
-*/

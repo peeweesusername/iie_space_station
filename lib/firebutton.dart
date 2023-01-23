@@ -4,37 +4,20 @@ import 'package:flame/flame.dart';
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
-class FireButton extends BodyComponent with Tappable {
+class FireButtonSprite extends SpriteComponent with Tappable, HasGameRef {
   double radius;
   Vector2 gameSize;
 
-  FireButton({required this.gameSize, required this.radius});
-
-  late SpriteComponent fireButtonSprite;
-  late Vector2 fireButtonPosition;
+  FireButtonSprite({required this.gameSize, required this.radius});
 
   @override
-  Body createBody() {
-    //Add Sprite with image of space direction button
-    Image fireStationImage = Flame.images.fromCache('fire_button.png');
-    fireButtonSprite = SpriteComponent.fromImage(
-      fireStationImage,
-      anchor: Anchor.center,
-      size: Vector2(radius, radius),
-    );
-
-    double xpos = ((fireButtonSprite.size.x) / 2);
-    fireButtonPosition = Vector2(xpos, gameSize.y / 2);
-    add(fireButtonSprite);
-
-    final shape = CircleShape();
-    shape.radius = radius/2;
-    setColor (const Color(0x00000000));
-
-    final bodyDef = BodyDef(position: fireButtonPosition, linearVelocity: Vector2.zero(), type: BodyType.static);
-    final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
-
-    return world.createBody(bodyDef)..createFixture(fixtureDef);
+  Future<void> onLoad() async {
+    super.onLoad();
+    sprite = await gameRef.loadSprite('fire_button.png');
+    size = Vector2(radius,radius);
+    double xpos = (size.x / 2);
+    position = Vector2(xpos, gameSize.y / 2);
+    anchor = Anchor.center;
   }
 
   @override
