@@ -6,9 +6,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/spacestationgame.dart';
-
-import 'basestation.dart';
-import 'edges.dart';
+import 'package:iie_space_station/basestation.dart';
 
 class LaserBolt extends BodyComponent {
   double l;
