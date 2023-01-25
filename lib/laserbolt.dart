@@ -33,9 +33,9 @@ class LaserBolt extends BodyComponent {
     laserBoltPosition += Vector2(gl*math.cos(angle), gl*math.sin(angle));
 
     //Add Sprite with image of laser bolt
-    Image baseStationImage = Flame.images.fromCache('green_laser_bolt.png');
+    Image laserBoltImage = Flame.images.fromCache('green_laser_bolt.png');
     laserBoltSprite = SpriteComponent.fromImage(
-      baseStationImage,
+        laserBoltImage,
       anchor: Anchor.center,
       size: Vector2(l, w)
     );

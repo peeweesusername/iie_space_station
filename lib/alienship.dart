@@ -17,9 +17,6 @@ class AlienShip extends BodyComponent {
     required this.gameSize,
     required this.dir});
 
-  static double then = 0;
-  static double count = 0;
-
   late SpriteComponent alienShipSprite;
 
   @override
@@ -28,7 +25,7 @@ class AlienShip extends BodyComponent {
     Vector2 alienShipPosition = Vector2.zero();
 
     /*
-    //Add Sprite with image of laser bolt
+    //Add Sprite with image of alien ship
     Image alienShipImage = Flame.images.fromCache('alien_ship.png');
     alienShipSprite = SpriteComponent.fromImage(
         alienShipImage,
@@ -59,14 +56,8 @@ class AlienShip extends BodyComponent {
 
   @override
   void update(double dt) {
-    then += dt;
     // TODO: implement update
     super.update(dt);
-    if (then > 1.0) {
-      count++;
-      print(count.toString());
-      then = 0;
-    }
   }
 }
 
@@ -79,7 +70,9 @@ class AlienShipCallback extends ContactCallbacks {
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //AlienShips will always be blowed up upon contact
+    print(other.toString());
     if (other is !AlienShipCallback) {
+      print(other.toString());
       alienShip.removeFromParent();
       //Do explosion and sound
     }
@@ -91,14 +84,3 @@ class AlienShipCallback extends ContactCallbacks {
   }
 }
 
-class AlienSpawner extends Component with HasGameRef {
-
-  //This will be added to the parent game
-  //Creates all four alien objects
-  //Then adds/removes to the parent game
-  @override
-  void update(double dt) {
-    // TODO: implement update
-    super.update(dt);
-  }
-}

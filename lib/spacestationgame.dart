@@ -9,7 +9,7 @@ import 'package:iie_space_station/edges.dart';
 import 'package:iie_space_station/basestation.dart';
 import 'package:iie_space_station/directionbutton.dart';
 import 'package:iie_space_station/firebutton.dart';
-import 'package:iie_space_station/alienship.dart';
+import 'package:iie_space_station/alienspawner.dart';
 
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
@@ -20,7 +20,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late BaseStation theStation;
   late DirectionButtonSprite theDirectionButtonSprite;
   late FireButtonSprite theFireButtonSprite;
-  late AlienShip neAlienShip;
+  late AlienSpawner theAlienSpawner;
 
   late Function() NewGame;
 
@@ -56,12 +56,8 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     );
     add(theDirectionButtonSprite);
 
-    neAlienShip = AlienShip(
-        l: alienShipL,
-        w: alienShipL,
-        gameSize: gameSize,
-        dir: Direction_E.NE);
-    add(neAlienShip);
+    theAlienSpawner = AlienSpawner();
+    add(theAlienSpawner);
 
     //overlays.add('FaceoffMenu');
   }
