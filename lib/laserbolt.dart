@@ -8,6 +8,8 @@ import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/spacestationgame.dart';
 import 'package:iie_space_station/basestation.dart';
 
+import 'package:iie_space_station/edges.dart';
+
 class LaserBolt extends BodyComponent {
   double l;
   double w;
@@ -69,7 +71,7 @@ class LaserBoltCallback extends ContactCallbacks {
   @override
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
-    //Laserbolts will alway be removed upon contact
+    //Laserbolts will always be removed upon contact
     //Other objects will explode, etc
     if (other is !BaseStationCallback) {
       parentGame.remove(laserBolt);

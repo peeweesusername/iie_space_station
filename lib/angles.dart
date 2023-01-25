@@ -58,3 +58,32 @@ double computeStationAngle (Direction_E direction, Vector2 boxSize) {
       }
   }
 }
+
+//Returns value in radians
+double computeAlienShipAngle (Direction_E direction, Vector2 boxSize) {
+  double a = 0.0;
+  double x = boxSize.x;
+  double y = boxSize.y;
+  switch(direction) {
+    case Direction_E.NE:
+      {
+        a = math.atan(x/y);
+        return a + math.pi;
+      }
+    case Direction_E.SE:
+      {
+        a = math.atan(y/x);
+        return a + (3.0*math.pi/2.0);
+      }
+    case Direction_E.SW:
+      {
+        a = math.atan(x/y);
+        return a;
+      }
+    case Direction_E.NW:
+      {
+        a = math.atan(y/x);
+        return a + (math.pi/2.0);
+      }
+  }
+}

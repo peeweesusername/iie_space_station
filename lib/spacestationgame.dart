@@ -3,11 +3,13 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:iie_space_station/angles.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/edges.dart';
 import 'package:iie_space_station/basestation.dart';
 import 'package:iie_space_station/directionbutton.dart';
 import 'package:iie_space_station/firebutton.dart';
+import 'package:iie_space_station/alienship.dart';
 
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
@@ -18,13 +20,13 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late BaseStation theStation;
   late DirectionButtonSprite theDirectionButtonSprite;
   late FireButtonSprite theFireButtonSprite;
+  late AlienShip neAlienShip;
 
   late Function() NewGame;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    camera.zoom = camera.zoom * myZoomFactor;
     gameSize = screenToWorld(camera.viewport.effectiveSize);
     gameBody = world.createBody(BodyDef());
     await FlameAudio.audioCache.load('laser_bolt.mp3');
@@ -53,6 +55,13 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
         radius: directionButtonSize
     );
     add(theDirectionButtonSprite);
+
+    neAlienShip = AlienShip(
+        l: alienShipL,
+        w: alienShipL,
+        gameSize: gameSize,
+        dir: Direction_E.NE);
+    add(neAlienShip);
 
     //overlays.add('FaceoffMenu');
   }
