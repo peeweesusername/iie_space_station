@@ -8,8 +8,6 @@ import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/spacestationgame.dart';
 import 'package:iie_space_station/basestation.dart';
 
-import 'package:iie_space_station/edges.dart';
-
 class LaserBolt extends BodyComponent {
   double l;
   double w;
@@ -24,6 +22,7 @@ class LaserBolt extends BodyComponent {
     required this.originCenter});
 
   late SpriteComponent laserBoltSprite;
+  bool destroy = false;
 
   @override
   Body createBody() {
@@ -60,26 +59,30 @@ class LaserBolt extends BodyComponent {
     FlameAudio.play('laser_bolt.mp3');
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    if (destroy) {
+      world.destroyBody(body);
+      gameRef.remove(this);
+    }
+  }
+
 }
 
 class LaserBoltCallback extends ContactCallbacks {
   final LaserBolt laserBolt;
-  late SpaceStationGame parentGame = laserBolt.findParent() as SpaceStationGame;
 
   LaserBoltCallback({required this.laserBolt});
 
   @override
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
-    //Laserbolts will always be removed upon contact
+    //Laserbolts will always be destroyed upon contact
     //Other objects will explode, etc
     if (other is !BaseStationCallback) {
-      parentGame.remove(laserBolt);
+      laserBolt.destroy = true;
     }
-  }
-
-  @override
-  void endContact(Object other, Contact contact) {
-    super.beginContact(other, contact);
   }
 }
