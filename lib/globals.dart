@@ -10,8 +10,8 @@ const double laserBoltL = 2.0;
 const double laserBoltW = 0.4;
 const double lbSpeed  = 40.0;
 
-const double alienShipL = 6;
-const double alienShipW = 3;
+const double alienShipL = 3;
+const double alienShipW = 1.5;
 
 
 

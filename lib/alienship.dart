@@ -18,11 +18,12 @@ class AlienShip extends BodyComponent {
     required this.dir});
 
   late SpriteComponent alienShipSprite;
+  bool destroy = false;
 
   @override
   Body createBody() {
     double angle = computeAlienShipAngle(dir, gameSize);
-    Vector2 alienShipPosition = Vector2.zero();
+    Vector2 alienShipPosition = Vector2(20,10);
 
     /*
     //Add Sprite with image of alien ship
@@ -56,8 +57,15 @@ class AlienShip extends BodyComponent {
 
   @override
   void update(double dt) {
-    // TODO: implement update
     super.update(dt);
+
+    if (destroy) {
+      destroy = false;
+      world.destroyBody(body);
+      removeFromParent();
+    }
+
+    //TODO: ship fires here
   }
 }
 
@@ -70,11 +78,8 @@ class AlienShipCallback extends ContactCallbacks {
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //AlienShips will always be blowed up upon contact
-    print(other.toString());
     if (other is !AlienShipCallback) {
-      print(other.toString());
-      alienShip.removeFromParent();
-      //Do explosion and sound
+      alienShip.destroy = true;
     }
   }
 
