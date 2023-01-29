@@ -74,6 +74,7 @@ flutter:
     - assets/images/green_laser_bolt.png
     - assets/images/red_laser_bolt.png
     - assets/images/alien_ship.png
+    - assets/images/fireball.png
     - assets/audio/laser_bolt.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
