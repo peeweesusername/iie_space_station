@@ -20,7 +20,6 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late BaseStation theStation;
   late DirectionButtonSprite theDirectionButtonSprite;
   late FireButtonSprite theFireButtonSprite;
-  late AlienSpawner theAlienSpawner;
 
   late Function() NewGame;
 
@@ -56,21 +55,23 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     );
     add(theDirectionButtonSprite);
 
-    theAlienSpawner = AlienSpawner();
-    add(theAlienSpawner);
-
-    //overlays.add('FaceoffMenu');
+    add(AlienSpawner(dir: Direction_E.SE));
+    add(AlienSpawner(dir: Direction_E.SW));
+    add(AlienSpawner(dir: Direction_E.NW));
+    add(AlienSpawner(dir: Direction_E.NE));
   }
 
+  void gameOver() {
+    //TODO: suspend all components, make transparent and overlays.add('GameOverMenu');
+  }
   void restartGame() {
-    //overlays.add('FaceoffMenu');
+    //TODO: restart the game
   }
 
   @override
   void onTapDown(int pointerId, TapDownInfo info) {
     super.onTapDown(pointerId, info);
     if (!info.handled) {
-      print('game handles tapdown');
     }
   }
 }

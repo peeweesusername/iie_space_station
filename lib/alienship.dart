@@ -1,19 +1,15 @@
 import 'package:flame/extensions.dart';
-import 'package:flame/flame.dart';
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
-import 'package:iie_space_station/spacestationgame.dart';
 
 class AlienShip extends BodyComponent {
-  double l;
-  double w;
+  double size;
   Vector2 gameSize;
   Direction_E dir;
 
   AlienShip({
-    required this.l,
-    required this.w,
+    required this.size,
     required this.gameSize,
     required this.dir});
 
@@ -23,7 +19,7 @@ class AlienShip extends BodyComponent {
   @override
   Body createBody() {
     double angle = computeAlienShipAngle(dir, gameSize);
-    Vector2 alienShipPosition = Vector2(20,10);
+    Vector2 alienShipPosition = computeAlienShipPosition(size, dir, gameSize);
 
     /*
     //Add Sprite with image of alien ship
@@ -36,8 +32,8 @@ class AlienShip extends BodyComponent {
     add(alienShipSprite);
     */
 
-    final shape = PolygonShape();
-    shape.setAsBoxXY(l, w);
+    final shape = CircleShape();
+    shape.radius = size;
     setColor (const Color(0xFFFF4100));
 
     final mycontact = AlienShipCallback(alienShip: this);
@@ -63,9 +59,44 @@ class AlienShip extends BodyComponent {
       destroy = false;
       world.destroyBody(body);
       removeFromParent();
+      //TODO: explosion here
     }
+    else {
+      //TODO: ship fires here
+    }
+  }
 
-    //TODO: ship fires here
+  Vector2 computeAlienShipPosition(double size, Direction_E dir, Vector2 gameSize) {
+    double xpos = 0.0;
+    double ypos = 0.0;
+
+    switch (dir) {
+      case Direction_E.SE: {
+        //Ship is in the NW corner
+        xpos = size; //left
+        ypos = size; //top
+      }
+      break;
+      case Direction_E.SW: {
+        //Ship is in the NE corner
+        xpos = gameSize.x - size; //right
+        ypos = size; //top
+      }
+      break;
+      case Direction_E.NW: {
+        //Ship is in the SE corner
+        xpos = gameSize.x - size; //right
+        ypos = gameSize.y - size; //bottom
+      }
+      break;
+      case Direction_E.NE: {
+        //Ship is in the SW corner
+        xpos = size; //left
+        ypos = gameSize.y - size; //bottom
+      }
+      break;
+    }
+    return Vector2(xpos,ypos);
   }
 }
 
@@ -81,11 +112,6 @@ class AlienShipCallback extends ContactCallbacks {
     if (other is !AlienShipCallback) {
       alienShip.destroy = true;
     }
-  }
-
-  @override
-  void endContact(Object other, Contact contact) {
-    super.beginContact(other, contact);
   }
 }
 
