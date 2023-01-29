@@ -1,7 +1,10 @@
 import 'package:flame/extensions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/flame.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
+
+import 'globals.dart';
 
 class AlienShip extends BodyComponent {
   double size;
@@ -21,20 +24,18 @@ class AlienShip extends BodyComponent {
     double angle = computeAlienShipAngle(dir, gameSize);
     Vector2 alienShipPosition = computeAlienShipPosition(size, dir, gameSize);
 
-    /*
     //Add Sprite with image of alien ship
     Image alienShipImage = Flame.images.fromCache('alien_ship.png');
     alienShipSprite = SpriteComponent.fromImage(
         alienShipImage,
         anchor: Anchor.center,
-        size: Vector2(l, w)
+        size: Vector2(size*alienShipScale, size*alienShipScale)
     );
     add(alienShipSprite);
-    */
 
     final shape = CircleShape();
     shape.radius = size;
-    setColor (const Color(0xFFFF4100));
+    setColor (const Color(0x00FF4100));
 
     final mycontact = AlienShipCallback(alienShip: this);
     final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
