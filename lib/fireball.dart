@@ -31,7 +31,7 @@ class FireBall extends BodyComponent {
     fireBallPosition += Vector2(gl*math.cos(angle), gl*math.sin(angle));
 
     //Add Sprite with image of laser bolt
-    Image fireBallImage = Flame.images.fromCache('fireball.png');
+    Image fireBallImage = Flame.images.fromCache('fireball.gif');
     fireBallSprite = SpriteComponent.fromImage(
         fireBallImage,
         anchor: Anchor.center,

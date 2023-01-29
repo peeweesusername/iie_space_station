@@ -35,8 +35,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     await Flame.images.load('green_laser_bolt.png');
     await Flame.images.load('red_laser_bolt.png');
     await Flame.images.load('alien_ship.png');
-    //Unable to load asset: assets/images/fireball.gif
-    //await Flame.images.load('fireball.gif');
+    await Flame.images.load('fireball.gif');
 
     add(Edges(gameSize: gameSize));
 
