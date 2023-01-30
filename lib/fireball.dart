@@ -39,8 +39,8 @@ class FireBall extends BodyComponent {
     );
     add(fireBallSprite);
 
-    final shape = PolygonShape();
-    shape.setAsBoxXY(l, w);
+    final shape = CircleShape();
+    shape.radius = fireBallR;
     setColor (const Color(0x00000000));
 
     final mycontact = FireBallCallback(fireBall: this);
