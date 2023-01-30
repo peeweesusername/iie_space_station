@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
-import 'package:iie_space_station/basestation.dart';
+import 'package:iie_space_station/alienship.dart';
 
 class FireBall extends BodyComponent {
   double l;
@@ -55,7 +55,7 @@ class FireBall extends BodyComponent {
         fixedRotation: true,
         userData: mycontact
     );
-    FlameAudio.play('laser_bolt.mp3');
+    //TODO: add fire ball muzzle blast sound
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 
@@ -81,7 +81,7 @@ class FireBallCallback extends ContactCallbacks {
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //fireBalls will always explode
-    if (other is !BaseStationCallback) {
+    if (other is !AlienShipCallback) {
       fireBall.destroy = true;
     }
   }
