@@ -72,11 +72,12 @@ class AlienShip extends BodyComponent {
       if (time > fireTime) {
         time = 0;
         fireTime = (myRND.nextDouble()*5.0);
-        add(FireBall(
+        gameRef.add(FireBall(
             l: fireBallL,
             w: fireBallW,
             a: alienShipAngle,
             gl: size*2.0,
+            //originCenter: Vector2(40,40))
             originCenter: alienShipPosition)
         );
       }
@@ -126,7 +127,7 @@ class AlienShipCallback extends ContactCallbacks {
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //AlienShips will always be blowed up upon contact
-    if (other is !AlienShipCallback) {
+    if (other is !FireBallCallback) {
       alienShip.destroy = true;
     }
   }

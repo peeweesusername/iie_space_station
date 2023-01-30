@@ -16,7 +16,7 @@ const double alienShipScale = 2.0;
 const double fireBallL = 5.37;
 const double fireBallW = 3.0;
 const double fireBallR = 2.0;
-const double fbSpeed  = 40.0;
+const double fbSpeed  = 5.0;
 
 
 

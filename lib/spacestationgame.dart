@@ -11,6 +11,8 @@ import 'package:iie_space_station/directionbutton.dart';
 import 'package:iie_space_station/firebutton.dart';
 import 'package:iie_space_station/alienspawner.dart';
 
+import 'alienship.dart';
+
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
   SpaceStationGame() : super(gravity: Vector2(0, 0));

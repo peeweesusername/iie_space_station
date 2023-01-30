@@ -5,7 +5,6 @@ import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
-import 'package:iie_space_station/alienship.dart';
 
 class FireBall extends BodyComponent {
   double l;
@@ -25,7 +24,7 @@ class FireBall extends BodyComponent {
 
   @override
   Body createBody() {
-    double angle = a - (90.0*math.pi/180.0);
+    double angle = a + (90.0*math.pi/180.0);
     Vector2 fireBallPosition = originCenter;
     //Adjust center for size of gun
     fireBallPosition += Vector2(gl*math.cos(angle), gl*math.sin(angle));
@@ -47,7 +46,7 @@ class FireBall extends BodyComponent {
     final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
     final bodyDef = BodyDef(
         position: fireBallPosition,
-        linearVelocity: Vector2(lbSpeed*math.cos(angle), lbSpeed*math.sin(angle)),
+        linearVelocity: Vector2(fbSpeed*math.cos(angle), fbSpeed*math.sin(angle)),
         angle: angle,
         angularVelocity: 0,
         type: BodyType.dynamic,
@@ -81,8 +80,9 @@ class FireBallCallback extends ContactCallbacks {
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //fireBalls will always explode
-    if (other is !AlienShipCallback) {
+    //if (other is !AlienShipCallback) {
+      print(other.toString());
       fireBall.destroy = true;
-    }
+    //}
   }
 }
