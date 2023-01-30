@@ -1,10 +1,11 @@
+import 'dart:math';
 import 'package:flame/extensions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
-
-import 'globals.dart';
+import 'package:iie_space_station/globals.dart';
+import 'package:iie_space_station/fireball.dart';
 
 class AlienShip extends BodyComponent {
   double size;
@@ -18,11 +19,16 @@ class AlienShip extends BodyComponent {
 
   late SpriteComponent alienShipSprite;
   bool destroy = false;
+  double time = 0;
+  double fireTime = 0.0;
+  double alienShipAngle = 0.0;
+  Vector2 alienShipPosition = Vector2.zero();
+  Random myRND = Random();
 
   @override
   Body createBody() {
-    double angle = computeAlienShipAngle(dir, gameSize);
-    Vector2 alienShipPosition = computeAlienShipPosition(size, dir, gameSize);
+    alienShipAngle = computeAlienShipAngle(dir, gameSize);
+    alienShipPosition = computeAlienShipPosition(size, dir, gameSize);
 
     //Add Sprite with image of alien ship
     Image alienShipImage = Flame.images.fromCache('alien_ship.png');
@@ -42,10 +48,9 @@ class AlienShip extends BodyComponent {
     final bodyDef = BodyDef(
         position: alienShipPosition,
         linearVelocity: Vector2.zero(),
-        angle: angle,
+        angle: alienShipAngle,
         angularVelocity: 0,
         type: BodyType.static,
-        bullet: true,
         fixedRotation: true,
         userData: mycontact
     );
@@ -55,6 +60,7 @@ class AlienShip extends BodyComponent {
   @override
   void update(double dt) {
     super.update(dt);
+    time += dt;
 
     if (destroy) {
       destroy = false;
@@ -63,7 +69,17 @@ class AlienShip extends BodyComponent {
       //TODO: explosion here
     }
     else {
-      //TODO: ship fires here
+      if (time > fireTime) {
+        time = 0;
+        fireTime = (myRND.nextDouble()*5.0);
+        add(FireBall(
+            l: fireBallL,
+            w: fireBallW,
+            a: alienShipAngle,
+            gl: size*2.0,
+            originCenter: alienShipPosition)
+        );
+      }
     }
   }
 
