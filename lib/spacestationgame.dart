@@ -10,20 +10,24 @@ import 'package:iie_space_station/basestation.dart';
 import 'package:iie_space_station/directionbutton.dart';
 import 'package:iie_space_station/firebutton.dart';
 import 'package:iie_space_station/alienspawner.dart';
-
-import 'alienship.dart';
+import 'package:iie_space_station/fireball.dart';
 
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
   SpaceStationGame() : super(gravity: Vector2(0, 0));
 
+  bool gameIsOver = false;
   late Body gameBody;
   late Vector2 gameSize;
   late BaseStation theStation;
   late DirectionButtonSprite theDirectionButtonSprite;
   late FireButtonSprite theFireButtonSprite;
+  late AlienSpawner seAlienSpawner;
+  late AlienSpawner swAlienSpawner;
+  late AlienSpawner nwAlienSpawner;
+  late AlienSpawner neAlienSpawner;
 
-  late Function() NewGame;
+  //late Function() NewGame;
 
   @override
   Future<void> onLoad() async {
@@ -59,23 +63,71 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     );
     add(theDirectionButtonSprite);
 
-    add(AlienSpawner(dir: Direction_E.SE));
-    add(AlienSpawner(dir: Direction_E.SW));
-    add(AlienSpawner(dir: Direction_E.NW));
-    add(AlienSpawner(dir: Direction_E.NE));
+    //Create alien spawners
+    seAlienSpawner = AlienSpawner(dir: Direction_E.SE);
+    swAlienSpawner = AlienSpawner(dir: Direction_E.SW);
+    nwAlienSpawner = AlienSpawner(dir: Direction_E.NW);
+    neAlienSpawner = AlienSpawner(dir: Direction_E.NE);
+
+    //Add alien spawners
+    add(seAlienSpawner);
+    add(swAlienSpawner);
+    add(nwAlienSpawner);
+    add(neAlienSpawner);
+  }
+
+  void removeFireBalls() {
+    if (children.isNotEmpty) {
+      for (var child in children) {
+        if (child is FireBall) {
+          world.destroyBody(child.body);
+          remove(child);
+        }
+      }
+    }
   }
 
   void gameOver() {
     //TODO: suspend all components, make transparent and overlays.add('GameOverMenu');
+    gameIsOver = true;
+    removeFireBalls();
+    seAlienSpawner.spawnerGameOver();
+    swAlienSpawner.spawnerGameOver();
+    nwAlienSpawner.spawnerGameOver();
+    neAlienSpawner.spawnerGameOver();
+    remove(seAlienSpawner);
+    remove(swAlienSpawner);
+    remove(nwAlienSpawner);
+    remove(neAlienSpawner);
   }
+
   void restartGame() {
     //TODO: restart the game
+    gameIsOver = false;
+    theStation = BaseStation(
+        gameSize: gameSize,
+        radius: baseStationSize
+    );
+    add(theStation);
+
+    //Create alien spawners
+    seAlienSpawner = AlienSpawner(dir: Direction_E.SE);
+    swAlienSpawner = AlienSpawner(dir: Direction_E.SW);
+    nwAlienSpawner = AlienSpawner(dir: Direction_E.NW);
+    neAlienSpawner = AlienSpawner(dir: Direction_E.NE);
+
+    //Add alien spawners
+    add(seAlienSpawner);
+    add(swAlienSpawner);
+    add(nwAlienSpawner);
+    add(neAlienSpawner);
   }
 
   @override
   void onTapDown(int pointerId, TapDownInfo info) {
     super.onTapDown(pointerId, info);
     if (!info.handled) {
+      restartGame();
     }
   }
 }

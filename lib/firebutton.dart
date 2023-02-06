@@ -24,6 +24,10 @@ class FireButtonSprite extends SpriteComponent with Tappable, HasGameRef {
 
   @override
   bool onTapDown(TapDownInfo info) {
+    if ((gameRef as SpaceStationGame).gameIsOver) {
+      info.handled = true;
+      return true;
+    }
     double a = (gameRef as SpaceStationGame).theStation.baseStationSprite.angle;
     double gunLen = (gameRef as SpaceStationGame).theStation.radius;
     Vector2 c = (gameRef as SpaceStationGame).theStation.center;

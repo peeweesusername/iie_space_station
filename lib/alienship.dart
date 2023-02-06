@@ -6,6 +6,7 @@ import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/fireball.dart';
+import 'package:iie_space_station/laserbolt.dart';
 
 class AlienShip extends BodyComponent {
   double size;
@@ -19,6 +20,7 @@ class AlienShip extends BodyComponent {
 
   late SpriteComponent alienShipSprite;
   bool destroy = false;
+  bool clearToFire = true;
   double time = 0;
   double fireTime = 0.0;
   double alienShipAngle = 0.0;
@@ -69,7 +71,7 @@ class AlienShip extends BodyComponent {
       //TODO: explosion here
     }
     else {
-      if (time > fireTime) {
+      if((time > fireTime) && (clearToFire)){
         time = 0;
         fireTime = (myRND.nextDouble()*5.0);
         gameRef.add(FireBall(
@@ -77,7 +79,6 @@ class AlienShip extends BodyComponent {
             w: fireBallW,
             a: alienShipAngle,
             gl: size*2.0,
-            //originCenter: Vector2(40,40))
             originCenter: alienShipPosition)
         );
       }
@@ -115,6 +116,14 @@ class AlienShip extends BodyComponent {
       break;
     }
     return Vector2(xpos,ypos);
+  }
+
+  void CeaseFire(){
+    clearToFire = false;
+  }
+
+  void OpenFire(){
+    clearToFire = true;
   }
 }
 

@@ -4,6 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/spacestationgame.dart';
+import 'package:iie_space_station/fireball.dart';
 
 class BaseStation extends BodyComponent {
   double radius;
@@ -12,6 +13,7 @@ class BaseStation extends BodyComponent {
   BaseStation({required this.gameSize, required this.radius});
 
   late SpriteComponent baseStationSprite;
+  bool destroy = false;
 
   @override
   Body createBody() {
@@ -44,6 +46,19 @@ class BaseStation extends BodyComponent {
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    if (destroy) {
+      destroy = false;
+      world.destroyBody(body);
+      removeFromParent();
+      (gameRef as SpaceStationGame).gameOver();
+      //TODO: explosion here
+    }
+  }
+
   //Argument angle is in radians
   void rotateby(double angle) {
     baseStationSprite.angle += angle;
@@ -64,10 +79,8 @@ class BaseStationCallback extends ContactCallbacks {
   @override
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
-  }
-
-  @override
-  void endContact(Object other, Contact contact) {
-    super.beginContact(other, contact);
+    if (other is FireBallCallback) {
+      baseStation.destroy = true;
+    }
   }
 }

@@ -13,6 +13,8 @@ class AlienSpawner extends Component with HasGameRef {
   double time = 0;
   double spawntime = 0.0;
   Random myrnd = Random();
+  bool allowSpawn = true;
+  late AlienShip theAlienShip;
 
   @override
   Future<void> onLoad() async {
@@ -28,13 +30,34 @@ class AlienSpawner extends Component with HasGameRef {
     if (time > spawntime) {
       time = 0;
       spawntime = (myrnd.nextDouble()*5.0);
-      if (children.isEmpty) {
-        add(AlienShip(
+      if ((children.isEmpty) && (allowSpawn)) {
+        theAlienShip = AlienShip(
             size: alienShipSize,
             gameSize: (gameRef as SpaceStationGame).gameSize,
-            dir: dir)
-        );
+            dir: dir);
+        add(theAlienShip);
       }
+    }
+  }
+
+  void stopSpawning() {
+    allowSpawn = false;
+  }
+
+  void startSpawning() {
+    allowSpawn = true;
+  }
+
+  void destroyAlienShip() {
+    if (children.isNotEmpty) {
+      theAlienShip.destroy = true;
+    }
+  }
+
+  void spawnerGameOver() {
+    stopSpawning();
+    if (children.isNotEmpty) {
+      theAlienShip.destroy = true;
     }
   }
 }

@@ -22,7 +22,6 @@ class _SpaceStationGameStatefull extends State<SpaceStationGameStatefull> {
   void initState() {
     super.initState();
     mySpaceStationGame = SpaceStationGame();
-    mySpaceStationGame.NewGame = NewGame;
   }
 
   @override
