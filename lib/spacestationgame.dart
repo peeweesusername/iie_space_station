@@ -126,7 +126,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   @override
   void onTapDown(int pointerId, TapDownInfo info) {
     super.onTapDown(pointerId, info);
-    if (!info.handled) {
+    if ((!info.handled) && (gameIsOver)) {
       restartGame();
     }
   }
