@@ -99,6 +99,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     remove(swAlienSpawner);
     remove(nwAlienSpawner);
     remove(neAlienSpawner);
+    overlays.add('gameOverMenu');
   }
 
   void restartGame() {
@@ -121,13 +122,5 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     add(swAlienSpawner);
     add(nwAlienSpawner);
     add(neAlienSpawner);
-  }
-
-  @override
-  void onTapDown(int pointerId, TapDownInfo info) {
-    super.onTapDown(pointerId, info);
-    if ((!info.handled) && (gameIsOver)) {
-      restartGame();
-    }
   }
 }

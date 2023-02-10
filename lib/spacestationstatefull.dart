@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:iie_space_station/spacestationgame.dart';
+import 'package:iie_space_station/gamemenus.dart';
 
 
 class SpaceStationGameStatefull extends StatefulWidget {
@@ -36,11 +37,9 @@ class _SpaceStationGameStatefull extends State<SpaceStationGameStatefull> {
             constraints: BoxConstraints.expand(width: x, height: y),
             child: GameWidget<SpaceStationGame>(
               game: mySpaceStationGame,
-              //overlayBuilderMap: const{
-              //  'PauseMenu': pauseMenuBuilder,
-              //  'FaceoffMenu': faceoffMenuBuilder,
-              //  'WinnerMenu': winnerMenuBuilder,
-              //},
+              overlayBuilderMap: const{
+                'gameOverMenu': gameOverMenuBuilder
+              },
               backgroundBuilder: (context) => Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
