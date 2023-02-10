@@ -17,6 +17,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   SpaceStationGame() : super(gravity: Vector2(0, 0));
 
   bool gameIsOver = false;
+  int score = 0;
   late Body gameBody;
   late Vector2 gameSize;
   late BaseStation theStation;
@@ -105,6 +106,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   void restartGame() {
     //TODO: restart the game
     gameIsOver = false;
+    score = 0;
     theStation = BaseStation(
         gameSize: gameSize,
         radius: baseStationSize

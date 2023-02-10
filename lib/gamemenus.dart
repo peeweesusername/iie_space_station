@@ -10,6 +10,8 @@ Widget gameOverMenuBuilder(BuildContext buildContext, SpaceStationGame game) {
         child: Column (
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text('Your score: ${game.score}', style: const TextStyle(fontSize: 24, color: Color(0xFF41FF00))),
+            const Text('', style: TextStyle(fontSize: 24)),
             GestureDetector(
                 onTap: (){
                   game.overlays.remove('gameOverMenu');

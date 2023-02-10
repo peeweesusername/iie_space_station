@@ -3,10 +3,12 @@ import 'package:flame/extensions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:iie_space_station/alienspawner.dart';
 import 'package:iie_space_station/angles.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/fireball.dart';
-import 'package:iie_space_station/laserbolt.dart';
+import 'package:iie_space_station/spacestationgame.dart';
+import 'package:iie_space_station/alienspawner.dart';
 
 class AlienShip extends BodyComponent {
   double size;
@@ -135,12 +137,15 @@ class AlienShipCallback extends ContactCallbacks {
 
   AlienShipCallback({required this.alienShip});
 
+  late AlienSpawner parent = alienShip.findParent() as AlienSpawner;
+
   @override
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //AlienShips will always be blowed up upon contact
     if (other is !FireBallCallback) {
       alienShip.destroy = true;
+      (parent.gameRef as SpaceStationGame).score += 5;
     }
   }
 }

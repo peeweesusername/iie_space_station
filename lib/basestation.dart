@@ -72,7 +72,6 @@ class BaseStation extends BodyComponent {
 
 class BaseStationCallback extends ContactCallbacks {
   final BaseStation baseStation;
-  late SpaceStationGame parentGame = baseStation.findParent() as SpaceStationGame;
 
   BaseStationCallback({required this.baseStation});
 
