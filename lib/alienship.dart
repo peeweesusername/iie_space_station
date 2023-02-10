@@ -10,11 +10,13 @@ import 'package:iie_space_station/laserbolt.dart';
 
 class AlienShip extends BodyComponent {
   double size;
+  double fbSpeed;
   Vector2 gameSize;
   Direction_E dir;
 
   AlienShip({
     required this.size,
+    required this.fbSpeed,
     required this.gameSize,
     required this.dir});
 
@@ -79,6 +81,7 @@ class AlienShip extends BodyComponent {
             w: fireBallW,
             a: alienShipAngle,
             gl: size*2.0,
+            speed: fbSpeed,
             originCenter: alienShipPosition)
         );
       }

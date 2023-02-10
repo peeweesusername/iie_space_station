@@ -12,6 +12,7 @@ class AlienSpawner extends Component with HasGameRef {
 
   double time = 0;
   double spawntime = 0.0;
+  double fireballspeed = fbInitSpeed;
   Random myrnd = Random();
   bool allowSpawn = true;
   late AlienShip theAlienShip;
@@ -33,9 +34,11 @@ class AlienSpawner extends Component with HasGameRef {
       if ((children.isEmpty) && (allowSpawn)) {
         theAlienShip = AlienShip(
             size: alienShipSize,
+            fbSpeed: fireballspeed,
             gameSize: (gameRef as SpaceStationGame).gameSize,
             dir: dir);
         add(theAlienShip);
+        fireballspeed++;
       }
     }
   }

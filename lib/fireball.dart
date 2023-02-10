@@ -12,12 +12,14 @@ class FireBall extends BodyComponent {
   double w;
   double a;
   double gl;
+  double speed;
   Vector2 originCenter;
 
   FireBall({required this.l,
     required this.w,
     required this.a,
     required this.gl,
+    required this.speed,
     required this.originCenter});
 
   late SpriteComponent fireBallSprite;
@@ -47,11 +49,10 @@ class FireBall extends BodyComponent {
     final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
     final bodyDef = BodyDef(
         position: fireBallPosition,
-        linearVelocity: Vector2(fbSpeed*math.cos(angle), fbSpeed*math.sin(angle)),
+        linearVelocity: Vector2(speed*math.cos(angle), speed*math.sin(angle)),
         angle: angle,
         angularVelocity: 0,
         type: BodyType.dynamic,
-        bullet: true,
         fixedRotation: true,
         userData: mycontact
     );
@@ -81,7 +82,7 @@ class FireBallCallback extends ContactCallbacks {
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //fireBalls will always explode
-    if (other is !AlienShipCallback) {
+    if ((other is !AlienShipCallback) && (other is !FireBallCallback)){
       fireBall.destroy = true;
     }
   }
