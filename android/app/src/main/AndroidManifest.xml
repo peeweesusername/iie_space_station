@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.iie_space_station">
+    package="com.peeweesusername.iie_space_station">
    <application
         android:label="iie_space_station"
         android:name="${applicationName}"

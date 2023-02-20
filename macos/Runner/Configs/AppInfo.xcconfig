@@ -8,7 +8,7 @@
 PRODUCT_NAME = iie_space_station
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.iieSpaceStation
+PRODUCT_BUNDLE_IDENTIFIER = com.peeweesusername.iieSpaceStation
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 com.peeweesusername. All rights reserved.

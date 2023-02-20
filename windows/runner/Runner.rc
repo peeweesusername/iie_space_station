@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "com.peeweesusername" "\0"
             VALUE "FileDescription", "iie_space_station" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "iie_space_station" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.peeweesusername. All rights reserved." "\0"
             VALUE "OriginalFilename", "iie_space_station.exe" "\0"
             VALUE "ProductName", "iie_space_station" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
