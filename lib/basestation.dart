@@ -5,6 +5,7 @@ import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/spacestationgame.dart';
 import 'package:iie_space_station/fireball.dart';
+import 'package:iie_space_station/explosions.dart';
 
 class BaseStation extends BodyComponent {
   double radius;
@@ -51,11 +52,12 @@ class BaseStation extends BodyComponent {
     super.update(dt);
 
     if (destroy) {
+      //TODO: explosion here
+      gameRef.add(BaseStationExplosion());
       destroy = false;
       world.destroyBody(body);
       removeFromParent();
       (gameRef as SpaceStationGame).gameOver();
-      //TODO: explosion here
     }
   }
 

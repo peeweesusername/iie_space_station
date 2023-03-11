@@ -1,6 +1,8 @@
+import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
+import 'package:flame/sprite.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
@@ -11,6 +13,8 @@ import 'package:iie_space_station/directionbutton.dart';
 import 'package:iie_space_station/firebutton.dart';
 import 'package:iie_space_station/alienspawner.dart';
 import 'package:iie_space_station/fireball.dart';
+
+import 'explosions.dart';
 
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
@@ -43,6 +47,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     await Flame.images.load('red_laser_bolt.png');
     await Flame.images.load('alien_ship.png');
     await Flame.images.load('fireball.gif');
+    await Flame.images.load('explosion1.png');
 
     add(Edges(gameSize: gameSize));
 
@@ -75,6 +80,29 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     add(swAlienSpawner);
     add(nwAlienSpawner);
     add(neAlienSpawner);
+
+    /*
+    final spriteSheet = SpriteSheet(
+      image: await images.load('explosion1.png'),
+      srcSize: Vector2(192.0, 192),
+    );
+
+    final myAnimation = spriteSheet.createAnimation(row: 0, stepTime: 0.1, to: 20, loop: false);
+
+    final spriteSize = Vector2(32,32);
+
+    final myComponent = SpriteAnimationComponent(
+      animation: myAnimation,
+      position: size/2,
+      size: spriteSize,
+      anchor: Anchor.center,
+      removeOnFinish: true,
+    );
+
+    //add(myComponent);
+    add(BaseStationExplosion());
+    */
+
   }
 
   void removeFireBalls() {
