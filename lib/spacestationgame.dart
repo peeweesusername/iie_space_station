@@ -10,13 +10,13 @@ import 'package:iie_space_station/directionbutton.dart';
 import 'package:iie_space_station/firebutton.dart';
 import 'package:iie_space_station/alienspawner.dart';
 import 'package:iie_space_station/fireball.dart';
+import 'package:iie_space_station/scorecomponent.dart';
 
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
   SpaceStationGame() : super(gravity: Vector2(0, 0));
 
   bool gameIsOver = false;
-  int score = 0;
   late BaseStation theStation;
   late DirectionButtonSprite theDirectionButtonSprite;
   late FireButtonSprite theFireButtonSprite;
@@ -24,6 +24,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late AlienSpawner swAlienSpawner;
   late AlienSpawner nwAlienSpawner;
   late AlienSpawner neAlienSpawner;
+  late ScoreComponent theScore;
 
   @override
   Future<void> onLoad() async {
@@ -75,6 +76,10 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     add(swAlienSpawner);
     add(nwAlienSpawner);
     add(neAlienSpawner);
+
+    //Add score
+    theScore = ScoreComponent();
+    add(theScore);
   }
 
   void removeFireBalls() {
@@ -106,7 +111,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   void restartGame() {
     //TODO: restart the game
     gameIsOver = false;
-    score = 0;
+    theScore.score = 0;
     theStation = BaseStation(
         gameSize: size,
         radius: baseStationSize

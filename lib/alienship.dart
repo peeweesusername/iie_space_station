@@ -151,7 +151,7 @@ class AlienShipCallback extends ContactCallbacks {
     //AlienShips will always be blowed up upon contact
     if (other is !FireBallCallback) {
       alienShip.destroy = true;
-      (parent.gameRef as SpaceStationGame).score += 5;
+      (parent.gameRef as SpaceStationGame).theScore.score += 5;
     }
   }
 }

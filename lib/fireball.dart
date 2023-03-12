@@ -85,7 +85,7 @@ class FireBallCallback extends ContactCallbacks {
     super.beginContact(other, contact);
     if (other is LaserBoltCallback) {
       fireBall.destroy = true;
-      parentGame.score += 1;
+      parentGame.theScore.score += 1;
     }
   }
 }

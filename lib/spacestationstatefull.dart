@@ -32,15 +32,16 @@ class _SpaceStationGameStatefull extends State<SpaceStationGameStatefull> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Container(
-            constraints: BoxConstraints.expand(width: x, height: y),
-            child: GameWidget<SpaceStationGame>(
-              game: mySpaceStationGame,
-              overlayBuilderMap: const{
-                'gameOverMenu': gameOverMenuBuilder
-              },
-              backgroundBuilder: (context) => Container(
-                decoration: const BoxDecoration(
+          children: <Widget>[
+            Container(
+              constraints: BoxConstraints.expand(width: x, height: y),
+              child: GameWidget<SpaceStationGame>(
+                game: mySpaceStationGame,
+                overlayBuilderMap: const{
+                  'gameOverMenu': gameOverMenuBuilder,
+                },
+                backgroundBuilder: (context) => Container(
+                  decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/StarfieldSimulation.gif'),
                     fit: BoxFit.cover,
