@@ -22,5 +22,6 @@ class BaseStationExplosion extends SpriteAnimationComponent with HasGameRef {
     size.multiply(baseStationExplostionSF);
     anchor = Anchor.center;
     removeOnFinish = true;
+    FlameAudio.play('explosion1.mp3');
   }
 }

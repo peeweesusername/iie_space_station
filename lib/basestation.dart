@@ -53,11 +53,10 @@ class BaseStation extends BodyComponent {
     super.update(dt);
 
     if (destroy) {
-      //TODO: explosion here
-      gameRef.add(BaseStationExplosion(explosionPosition: baseStationPosition));
       destroy = false;
       world.destroyBody(body);
       removeFromParent();
+      gameRef.add(BaseStationExplosion(explosionPosition: baseStationPosition));
       (gameRef as SpaceStationGame).gameOver();
     }
   }

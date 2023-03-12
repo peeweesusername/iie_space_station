@@ -28,7 +28,6 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    await FlameAudio.audioCache.load('laser_bolt.mp3');
     await Flame.images.load('base_station.png');
     await Flame.images.load('direction_button.png');
     await Flame.images.load('fire_button.png');
@@ -37,6 +36,8 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     await Flame.images.load('alien_ship.png');
     await Flame.images.load('fireball.gif');
     await Flame.images.load('explosion1.png');
+    await FlameAudio.audioCache.load('laser_bolt.mp3');
+    await FlameAudio.audioCache.load('explosion1.mp3');
 
     add(Edges(gameSize: size));
 

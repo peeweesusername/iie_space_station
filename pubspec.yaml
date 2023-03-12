@@ -83,6 +83,7 @@ flutter:
     - assets/images/fireball.gif
     - assets/images/explosion1.png
     - assets/audio/laser_bolt.mp3
+    - assets/audio/explosion1.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
