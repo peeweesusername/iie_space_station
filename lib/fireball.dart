@@ -68,7 +68,6 @@ class FireBall extends BodyComponent {
       world.destroyBody(body);
       removeFromParent();
       destroy = false;
-      //TODO: explosion here
     }
   }
 

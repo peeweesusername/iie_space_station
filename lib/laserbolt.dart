@@ -6,6 +6,8 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/basestation.dart';
+import 'package:iie_space_station/fireball.dart';
+import 'package:iie_space_station/explosions.dart';
 
 class LaserBolt extends BodyComponent {
   double l;
@@ -22,6 +24,7 @@ class LaserBolt extends BodyComponent {
 
   late SpriteComponent laserBoltSprite;
   bool destroy = false;
+  bool explode = false;
 
   @override
   Body createBody() {
@@ -62,7 +65,13 @@ class LaserBolt extends BodyComponent {
   @override
   void update(double dt) {
     super.update(dt);
-    if (destroy) {
+    if (explode) {
+      gameRef.add(MissileExplosion(explosionPosition: body.position));
+      world.destroyBody(body);
+      removeFromParent();
+      destroy = false;
+    }
+    else if (destroy) {
       world.destroyBody(body);
       removeFromParent();
       destroy = false;
@@ -80,8 +89,11 @@ class LaserBoltCallback extends ContactCallbacks {
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
     //Laserbolts will always be destroyed upon contact
-    //Other objects will explode, etc
-    if (other is !BaseStationCallback) {
+    //Will explode upon contact with FireBallCallback
+    if (other is FireBallCallback) {
+      laserBolt.explode = true;
+    }
+    else if (other is !BaseStationCallback) {
       laserBolt.destroy = true;
     }
   }

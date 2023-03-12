@@ -20,18 +20,25 @@ const double fireBallW = 2.0;
 const double fireBallR = 2.0;
 const double fbInitSpeed  = 2.0;
 
-const double baseStationExplostionSFX = 0.4375;
-const double baseStationExplostionSFY = 0.7778;
-Vector2 baseStationExplostionSF = Vector2(
-    baseStationExplostionSFX,
-    baseStationExplostionSFY
+const double baseStationExplosionSFX = 0.4375;
+const double baseStationExplosionSFY = 0.7778;
+Vector2 baseStationExplosionSF = Vector2(
+    baseStationExplosionSFX,
+    baseStationExplosionSFY
 );
 
-const double alienShipExplostionSFX = baseStationExplostionSFX/2;
-const double alienShipExplostionSFY = baseStationExplostionSFY/2;
-Vector2 alienShipExplostionSF = Vector2(
-    alienShipExplostionSFX,
-    alienShipExplostionSFY
+const double alienShipExplosionSFX = baseStationExplosionSFX/2;
+const double alienShipExplosionSFY = baseStationExplosionSFY/2;
+Vector2 alienShipExplosionSF = Vector2(
+    alienShipExplosionSFX,
+    alienShipExplosionSFY
+);
+
+const double missileExplosionSFX = baseStationExplosionSFX/10;
+const double missileExplosionSFY = baseStationExplosionSFY/10;
+Vector2 missileExplosionSF = Vector2(
+    missileExplosionSFX,
+    missileExplosionSFY
 );
 
 

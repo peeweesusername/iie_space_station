@@ -37,6 +37,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     await Flame.images.load('fireball.png');
     await Flame.images.load('explosion1.png');
     await Flame.images.load('explosion2.png');
+    await Flame.images.load('explosion3.png');
     await FlameAudio.audioCache.load('laser_bolt.mp3');
     await FlameAudio.audioCache.load('explosion1.mp3');
     await FlameAudio.audioCache.load('explosion2.mp3');

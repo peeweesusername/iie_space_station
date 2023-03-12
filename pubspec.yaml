@@ -83,6 +83,7 @@ flutter:
     - assets/images/fireball.png
     - assets/images/explosion1.png
     - assets/images/explosion2.png
+    - assets/images/explosion3.png
     - assets/audio/laser_bolt.mp3
     - assets/audio/explosion1.mp3
     - assets/audio/explosion2.mp3
