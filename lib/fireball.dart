@@ -57,7 +57,7 @@ class FireBall extends BodyComponent {
         fixedRotation: true,
         userData: mycontact
     );
-    FlameAudio.play('splat.mp3');
+    FlameAudio.play('blaster.mp3');
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 
