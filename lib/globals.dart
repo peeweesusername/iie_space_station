@@ -15,10 +15,10 @@ const double lbSpeed  = 40.0;
 const double alienShipSize = 5.0;
 const double alienShipScale = 2.0;
 
-const double fireBallL = 5.37;
-const double fireBallW = 3.0;
+const double fireBallL = 2.0;
+const double fireBallW = 2.0;
 const double fireBallR = 2.0;
-const double fbInitSpeed  = 1.0;
+const double fbInitSpeed  = 2.0;
 
 const double baseStationExplostionSFX = 0.4375;
 const double baseStationExplostionSFY = 0.7778;

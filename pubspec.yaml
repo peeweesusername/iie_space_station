@@ -80,7 +80,7 @@ flutter:
     - assets/images/green_laser_bolt.png
     - assets/images/red_laser_bolt.png
     - assets/images/alien_ship.png
-    - assets/images/fireball.gif
+    - assets/images/fireball.png
     - assets/images/explosion1.png
     - assets/images/explosion2.png
     - assets/audio/laser_bolt.mp3
