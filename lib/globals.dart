@@ -9,7 +9,7 @@ const double directionButtonSize = 12.0;
 const double fireButtonSize = 12.0;
 
 const double laserBoltL = 2.0;
-const double laserBoltW = 0.4;
+const double laserBoltW = 1.0;
 const double lbSpeed  = 40.0;
 
 const double alienShipSize = 5.0;
