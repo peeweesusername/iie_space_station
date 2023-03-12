@@ -59,7 +59,7 @@ class AlienSpawner extends Component with HasGameRef {
   void spawnerGameOver() {
     stopSpawning();
     if (children.isNotEmpty) {
-      theAlienShip.destroy = true;
+      theAlienShip.gameover = true;
     }
   }
 }

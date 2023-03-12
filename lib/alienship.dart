@@ -8,6 +8,7 @@ import 'package:iie_space_station/angles.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/fireball.dart';
 import 'package:iie_space_station/spacestationgame.dart';
+import 'package:iie_space_station/explosions.dart';
 
 class AlienShip extends BodyComponent {
   double size;
@@ -23,6 +24,7 @@ class AlienShip extends BodyComponent {
 
   late SpriteComponent alienShipSprite;
   bool destroy = false;
+  bool gameover = false;
   bool clearToFire = true;
   double time = 0;
   double fireTime = 0.0;
@@ -71,7 +73,12 @@ class AlienShip extends BodyComponent {
       destroy = false;
       world.destroyBody(body);
       removeFromParent();
-      //TODO: explosion here
+      gameRef.add(AlienShipExplosion(explosionPosition: alienShipPosition));
+    }
+    else if (gameover) {
+      gameover = false;
+      world.destroyBody(body);
+      removeFromParent();
     }
     else {
       if((time > fireTime) && (clearToFire)){

@@ -25,3 +25,25 @@ class BaseStationExplosion extends SpriteAnimationComponent with HasGameRef {
     FlameAudio.play('explosion1.mp3');
   }
 }
+
+class AlienShipExplosion extends SpriteAnimationComponent with HasGameRef {
+
+  Vector2 explosionPosition;
+
+  AlienShipExplosion({required this.explosionPosition});
+
+  @override
+  Future<void> onLoad() async {
+    final spriteSheet = SpriteSheet(
+      image: Flame.images.fromCache('explosion2.png'),
+      srcSize: Vector2(192.0, 192),
+    );
+    animation = spriteSheet.createAnimation(row: 0, stepTime: 0.1, to: 7, loop: false);
+    position = explosionPosition;
+    size = gameRef.size;
+    size.multiply(alienShipExplostionSF);
+    anchor = Anchor.center;
+    removeOnFinish = true;
+    FlameAudio.play('explosion2.mp3');
+  }
+}

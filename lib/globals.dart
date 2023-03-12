@@ -27,5 +27,12 @@ Vector2 baseStationExplostionSF = Vector2(
     baseStationExplostionSFY
 );
 
+const double alienShipExplostionSFX = baseStationExplostionSFX/2;
+const double alienShipExplostionSFY = baseStationExplostionSFY/2;
+Vector2 alienShipExplostionSF = Vector2(
+    alienShipExplostionSFX,
+    alienShipExplostionSFY
+);
+
 
 
