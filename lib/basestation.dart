@@ -14,11 +14,12 @@ class BaseStation extends BodyComponent {
   BaseStation({required this.gameSize, required this.radius});
 
   late SpriteComponent baseStationSprite;
+  late Vector2 baseStationPosition;
   bool destroy = false;
 
   @override
   Body createBody() {
-    Vector2 baseStationPosition = Vector2(gameSize.x / 2, gameSize.y / 2);
+    baseStationPosition = gameSize/2;
     //Add Sprite with image of space station/gun turret
     Image baseStationImage = Flame.images.fromCache('base_station.png');
     baseStationSprite = SpriteComponent.fromImage(
@@ -53,7 +54,7 @@ class BaseStation extends BodyComponent {
 
     if (destroy) {
       //TODO: explosion here
-      gameRef.add(BaseStationExplosion());
+      gameRef.add(BaseStationExplosion(explosionPosition: baseStationPosition));
       destroy = false;
       world.destroyBody(body);
       removeFromParent();

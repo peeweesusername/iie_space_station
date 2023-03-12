@@ -81,28 +81,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     add(nwAlienSpawner);
     add(neAlienSpawner);
 
-    /*
-    final spriteSheet = SpriteSheet(
-      image: await images.load('explosion1.png'),
-      srcSize: Vector2(192.0, 192),
-    );
-
-    final myAnimation = spriteSheet.createAnimation(row: 0, stepTime: 0.1, to: 20, loop: false);
-
-    final spriteSize = Vector2(32,32);
-
-    final myComponent = SpriteAnimationComponent(
-      animation: myAnimation,
-      position: size/2,
-      size: spriteSize,
-      anchor: Anchor.center,
-      removeOnFinish: true,
-    );
-
-    //add(myComponent);
-    add(BaseStationExplosion());
-    */
-
+    print(gameSize);
   }
 
   void removeFireBalls() {
