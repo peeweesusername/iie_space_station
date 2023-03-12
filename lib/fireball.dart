@@ -5,8 +5,8 @@ import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
-import 'package:iie_space_station/alienship.dart';
 import 'package:iie_space_station/spacestationgame.dart';
+import 'package:iie_space_station/laserbolt.dart';
 
 class FireBall extends BodyComponent {
   double l;
@@ -83,8 +83,7 @@ class FireBallCallback extends ContactCallbacks {
   @override
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
-    //fireBalls will always explode
-    if ((other is !AlienShipCallback) && (other is !FireBallCallback)){
+    if (other is LaserBoltCallback) {
       fireBall.destroy = true;
       parentGame.score += 1;
     }
