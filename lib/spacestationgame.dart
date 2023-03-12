@@ -1,8 +1,5 @@
-import 'package:flame/components.dart';
-import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
-import 'package:flame/sprite.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/angles.dart';
@@ -14,16 +11,12 @@ import 'package:iie_space_station/firebutton.dart';
 import 'package:iie_space_station/alienspawner.dart';
 import 'package:iie_space_station/fireball.dart';
 
-import 'explosions.dart';
-
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
   SpaceStationGame() : super(gravity: Vector2(0, 0));
 
   bool gameIsOver = false;
   int score = 0;
-  late Body gameBody;
-  late Vector2 gameSize;
   late BaseStation theStation;
   late DirectionButtonSprite theDirectionButtonSprite;
   late FireButtonSprite theFireButtonSprite;
@@ -32,13 +25,9 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late AlienSpawner nwAlienSpawner;
   late AlienSpawner neAlienSpawner;
 
-  //late Function() NewGame;
-
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    gameSize = screenToWorld(camera.viewport.effectiveSize);
-    gameBody = world.createBody(BodyDef());
     await FlameAudio.audioCache.load('laser_bolt.mp3');
     await Flame.images.load('base_station.png');
     await Flame.images.load('direction_button.png');
@@ -49,22 +38,22 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     await Flame.images.load('fireball.gif');
     await Flame.images.load('explosion1.png');
 
-    add(Edges(gameSize: gameSize));
+    add(Edges(gameSize: size));
 
     theStation = BaseStation(
-        gameSize: gameSize,
+        gameSize: size,
         radius: baseStationSize
     );
     add(theStation);
 
     theFireButtonSprite = FireButtonSprite(
-        gameSize: gameSize,
+        gameSize: size,
         radius: fireButtonSize
     );
     add(theFireButtonSprite);
 
     theDirectionButtonSprite = DirectionButtonSprite(
-        gameSize: gameSize,
+        gameSize: size,
         radius: directionButtonSize
     );
     add(theDirectionButtonSprite);
@@ -80,8 +69,6 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     add(swAlienSpawner);
     add(nwAlienSpawner);
     add(neAlienSpawner);
-
-    print(gameSize);
   }
 
   void removeFireBalls() {
@@ -115,7 +102,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     gameIsOver = false;
     score = 0;
     theStation = BaseStation(
-        gameSize: gameSize,
+        gameSize: size,
         radius: baseStationSize
     );
     add(theStation);

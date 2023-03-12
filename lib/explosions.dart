@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:iie_space_station/globals.dart';
 
 class BaseStationExplosion extends SpriteAnimationComponent with HasGameRef {

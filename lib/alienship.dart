@@ -8,7 +8,6 @@ import 'package:iie_space_station/angles.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/fireball.dart';
 import 'package:iie_space_station/spacestationgame.dart';
-import 'package:iie_space_station/alienspawner.dart';
 
 class AlienShip extends BodyComponent {
   double size;

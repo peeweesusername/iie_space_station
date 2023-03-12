@@ -4,8 +4,6 @@ import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/laserbolt.dart';
 import 'package:iie_space_station/spacestationgame.dart';
 
-import 'fireball.dart';
-
 class FireButtonSprite extends SpriteComponent with Tappable, HasGameRef {
   double radius;
   Vector2 gameSize;

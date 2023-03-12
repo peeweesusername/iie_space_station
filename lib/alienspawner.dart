@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/angles.dart';
-import 'package:iie_space_station/spacestationgame.dart';
 import 'package:iie_space_station/alienship.dart';
 
 class AlienSpawner extends Component with HasGameRef {
@@ -35,7 +34,7 @@ class AlienSpawner extends Component with HasGameRef {
         theAlienShip = AlienShip(
             size: alienShipSize,
             fbSpeed: fireballspeed,
-            gameSize: (gameRef as SpaceStationGame).gameSize,
+            gameSize: gameRef.size,
             dir: dir);
         add(theAlienShip);
         fireballspeed++;
