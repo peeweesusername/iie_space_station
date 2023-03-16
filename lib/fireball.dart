@@ -7,6 +7,7 @@ import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:iie_space_station/globals.dart';
 import 'package:iie_space_station/spacestationgame.dart';
 import 'package:iie_space_station/laserbolt.dart';
+import 'package:iie_space_station/edges.dart';
 
 class FireBall extends BodyComponent {
   double l;
@@ -83,7 +84,7 @@ class FireBallCallback extends ContactCallbacks {
   @override
   beginContact(Object other, Contact contact)  {
     super.beginContact(other, contact);
-    if (other is LaserBoltCallback) {
+    if ((other is LaserBoltCallback) || (other is EdgesCallback)){
       fireBall.destroy = true;
       parentGame.theScore.score += 1;
     }
