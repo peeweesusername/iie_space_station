@@ -34,6 +34,7 @@ class AlienShip extends BodyComponent {
 
   @override
   Body createBody() {
+    size = 5;
     alienShipAngle = computeAlienShipAngle(dir, gameSize);
     alienShipPosition = computeAlienShipPosition(size, dir, gameSize);
 
@@ -88,7 +89,7 @@ class AlienShip extends BodyComponent {
             l: fireBallL,
             w: fireBallW,
             a: alienShipAngle,
-            gl: size*2.0,
+            gl: size,
             speed: fbSpeed,
             originCenter: alienShipPosition)
         );

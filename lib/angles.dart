@@ -3,6 +3,7 @@ import 'package:flame/extensions.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:iie_space_station/globals.dart';
 
 enum Direction_E {
   NE,
@@ -38,22 +39,22 @@ double computeStationAngle (Direction_E direction, Vector2 boxSize) {
   switch(direction) {
     case Direction_E.NE:
       {
-        a = math.atan(x/y);
+        a = math.atan( ((x-alienShipSize)-(x/2)) / ((y-alienShipSize)-(y/2)) );
         return a;
       }
     case Direction_E.SE:
       {
-        a = math.atan(y/x);
+        a = math.atan( ((y-alienShipSize)-(y/2)) / ((x-alienShipSize)-(x/2)) );
         return a + (math.pi/2.0);
       }
     case Direction_E.SW:
       {
-        a = math.atan(x/y);
+        a = math.atan( ((x-alienShipSize)-(x/2)) / ((y-alienShipSize)-(y/2)) );
         return a + math.pi;
       }
     case Direction_E.NW:
       {
-        a = math.atan(y/x);
+        a = math.atan( ((y-alienShipSize)-(y/2)) / ((x-alienShipSize)-(x/2)) );
         return a + (3.0*math.pi/2.0);
       }
   }
@@ -67,22 +68,22 @@ double computeAlienShipAngle (Direction_E direction, Vector2 boxSize) {
   switch(direction) {
     case Direction_E.NE:
       {
-        a = math.atan(x/y);
+        a = math.atan( ((x-alienShipSize)-(x/2)) / ((y-alienShipSize)-(y/2)) );
         return a + math.pi;
       }
     case Direction_E.SE:
       {
-        a = math.atan(y/x);
+        a = math.atan( ((y-alienShipSize)-(y/2)) / ((x-alienShipSize)-(x/2)) );
         return a + (3.0*math.pi/2.0);
       }
     case Direction_E.SW:
       {
-        a = math.atan(x/y);
+        a = math.atan( ((x-alienShipSize)-(x/2)) / ((y-alienShipSize)-(y/2)) );
         return a;
       }
     case Direction_E.NW:
       {
-        a = math.atan(y/x);
+        a = math.atan( ((y-alienShipSize)-(y/2)) / ((x-alienShipSize)-(x/2)) );
         return a + (math.pi/2.0);
       }
   }
