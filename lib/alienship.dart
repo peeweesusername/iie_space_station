@@ -85,7 +85,6 @@ class AlienShip extends BodyComponent {
       if((time > fireTime) && (clearToFire)){
         time = 0;
         fireTime = (myRND.nextDouble()*3.0) + 2.0;
-        print (fireTime);
         gameRef.add(FireBall(
             l: fireBallL,
             w: fireBallW,

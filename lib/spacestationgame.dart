@@ -11,6 +11,7 @@ import 'package:iie_space_station/firebutton.dart';
 import 'package:iie_space_station/alienspawner.dart';
 import 'package:iie_space_station/fireball.dart';
 import 'package:iie_space_station/scorecomponent.dart';
+import 'package:iie_space_station/topscores.dart';
 
 class SpaceStationGame extends Forge2DGame with HasTappables  {
   //Needed to eliminate gravity vector
@@ -25,6 +26,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   late AlienSpawner nwAlienSpawner;
   late AlienSpawner neAlienSpawner;
   late ScoreComponent theScore;
+  late TopScores theTopScores;
 
   @override
   Future<void> onLoad() async {
@@ -80,6 +82,10 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     //Add score
     theScore = ScoreComponent();
     add(theScore);
+
+    //Top scores
+    theTopScores = TopScores();
+    theTopScores.loadScores();
   }
 
   void removeFireBalls() {
@@ -93,7 +99,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     }
   }
 
-  void gameOver() {
+  Future<void> gameOver() async {
     gameIsOver = true;
     removeFireBalls();
     seAlienSpawner.spawnerGameOver();
@@ -104,6 +110,13 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     remove(swAlienSpawner);
     remove(nwAlienSpawner);
     remove(neAlienSpawner);
+    if(theTopScores.ifInTopScores(theScore.score)) {
+      //TODO: Call overlay to get player's initials
+      //When done, it displays top score list with dismiss/OK
+      //then loads game over menu
+      await theTopScores.addNewScore(theScore.score, 'pew');
+      await theTopScores.saveScores();
+    }
     overlays.add('gameOverMenu');
   }
 
