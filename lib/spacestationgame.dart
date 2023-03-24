@@ -94,7 +94,6 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   }
 
   void gameOver() {
-    //TODO: suspend all components, make transparent and overlays.add('GameOverMenu');
     gameIsOver = true;
     removeFireBalls();
     seAlienSpawner.spawnerGameOver();
@@ -109,7 +108,6 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   }
 
   void restartGame() {
-    //TODO: restart the game
     gameIsOver = false;
     theScore.score = 0;
     theStation = BaseStation(

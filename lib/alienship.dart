@@ -91,6 +91,7 @@ class AlienShip extends BodyComponent {
             w: fireBallW,
             a: alienShipAngle,
             gl: size,
+            //TODO - increase fireball as game time progresses
             speed: fbSpeed,
             originCenter: alienShipPosition)
         );

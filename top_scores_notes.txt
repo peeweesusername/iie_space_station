@@ -1,0 +1,8 @@
+
+1) Storage: write score, read scores, return list of scores, lowest score.  Key is ranking: 1-10
+2) Game over menu option to display top scores
+3) overlay of Top scores with OK/dismiss button goes to game over overlay menu
+4) Check in gameOver() if score > lowest score, calls Add Your Score()
+5) Add your score() adds score and three initals to slot > lowest score slot. 
+- OK when done, goes to Top Scores overlay
+6) 

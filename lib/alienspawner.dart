@@ -33,6 +33,7 @@ class AlienSpawner extends Component with HasGameRef {
       if ((children.isEmpty) && (allowSpawn)) {
         theAlienShip = AlienShip(
             size: alienShipSize,
+            //TODO - increase fireball as game time progresses 
             fbSpeed: fireballspeed,
             gameSize: gameRef.size,
             dir: dir);
