@@ -111,13 +111,11 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     remove(nwAlienSpawner);
     remove(neAlienSpawner);
     if(theTopScores.ifInTopScores(theScore.score)) {
-      //TODO: Call overlay to get player's initials
-      //When done, it displays top score list with dismiss/OK
-      //then loads game over menu
-      await theTopScores.addNewScore(theScore.score, 'pew');
-      await theTopScores.saveScores();
+      overlays.add('enterInitials');
     }
-    overlays.add('gameOverMenu');
+    else {
+      overlays.add('gameOverMenu');
+    }
   }
 
   void restartGame() {

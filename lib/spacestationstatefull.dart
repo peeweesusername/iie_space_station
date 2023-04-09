@@ -29,6 +29,7 @@ class _SpaceStationGameStatefull extends State<SpaceStationGameStatefull> {
     double x = MediaQuery.of(context).size.width.toDouble();
     double y = MediaQuery.of(context).size.height.toDouble();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -40,6 +41,7 @@ class _SpaceStationGameStatefull extends State<SpaceStationGameStatefull> {
                 overlayBuilderMap: const{
                   'gameOverMenu': gameOverMenuBuilder,
                   'topScores': topScoresMenuBuilder,
+                  'enterInitials': enterInitialsMenuBuilder,
                 },
                 backgroundBuilder: (context) => Container(
                   decoration: const BoxDecoration(
