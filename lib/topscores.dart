@@ -1,4 +1,6 @@
+import 'package:format/format.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 import 'package:iie_space_station/globals.dart';
 
 class Score implements Comparable<Score>{
@@ -112,6 +114,25 @@ class TopScores {
     for (var score in _scores) {
       print('${score.initials} @ ${score.score}');
     }
+  }
+
+  List<Text> highScoresList() {
+    List<Text> theScores=[];
+
+    for (var element in _scores) {
+      var fs = format('{:4d}', element.score);
+      var fi = format('{:5s}', '${element.initials}: ');
+      theScores.add(Text(fi+fs,
+          style: const TextStyle(
+              fontSize: 24,
+              fontFamily: 'RobotoMono',
+              color:
+              Color(0xFF41FF00)
+          ))
+      );
+    }
+
+    return theScores;
   }
 }
 

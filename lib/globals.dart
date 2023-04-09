@@ -41,7 +41,7 @@ Vector2 missileExplosionSF = Vector2(
     missileExplosionSFY
 );
 
-const int maxNumberScores = 10;
+const int maxNumberScores = 5;
 
 
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:iie_space_station/spacestationgame.dart';
-import 'package:iie_space_station/gamemenus.dart';
+import 'package:iie_space_station/gameoverlays.dart';
 
 class SpaceStationGameStatefull extends StatefulWidget {
   const SpaceStationGameStatefull({super.key});
@@ -39,6 +39,7 @@ class _SpaceStationGameStatefull extends State<SpaceStationGameStatefull> {
                 game: mySpaceStationGame,
                 overlayBuilderMap: const{
                   'gameOverMenu': gameOverMenuBuilder,
+                  'topScores': topScoresMenuBuilder,
                 },
                 backgroundBuilder: (context) => Container(
                   decoration: const BoxDecoration(
