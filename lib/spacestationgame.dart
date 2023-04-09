@@ -79,13 +79,14 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
     add(nwAlienSpawner);
     add(neAlienSpawner);
 
-    //Add score
-    theScore = ScoreComponent();
-    add(theScore);
 
     //Top scores
     theTopScores = TopScores();
     theTopScores.loadScores();
+
+    //Add score
+    theScore = ScoreComponent();
+    add(theScore);
   }
 
   void removeFireBalls() {

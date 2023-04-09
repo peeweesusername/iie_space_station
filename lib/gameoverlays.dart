@@ -116,11 +116,6 @@ Widget enterInitialsMenuBuilder(BuildContext buildContext, SpaceStationGame game
             ),
             const Text('', style: TextStyle(fontSize: 24)),
             const Text('', style: TextStyle(fontSize: 24)),
-            const Text('You Are In The Top Five', style: TextStyle(
-              fontSize: 24,
-              color: Color(0xFF41FF00),
-              decoration: TextDecoration. underline,)
-            ),
           ],
         ),
       ),
