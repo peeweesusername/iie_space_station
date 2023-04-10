@@ -122,6 +122,7 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   void restartGame() {
     gameIsOver = false;
     theScore.score = 0;
+    gfireballspeed = fbInitSpeed;
     theStation = BaseStation(
         gameSize: size,
         radius: baseStationSize

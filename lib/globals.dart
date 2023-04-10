@@ -19,6 +19,8 @@ const double fireBallL = 2.0;
 const double fireBallW = 2.0;
 const double fireBallR = 2.0;
 const double fbInitSpeed  = 2.0;
+double gfireballspeed = fbInitSpeed;
+const double fbspeedperiod = 5;
 
 const double baseStationExplosionSFX = 0.4375;
 const double baseStationExplosionSFY = 0.7778;

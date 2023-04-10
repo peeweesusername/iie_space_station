@@ -12,13 +12,11 @@ import 'package:iie_space_station/explosions.dart';
 
 class AlienShip extends BodyComponent {
   double size;
-  double fbSpeed;
   Vector2 gameSize;
   Direction_E dir;
 
   AlienShip({
     required this.size,
-    required this.fbSpeed,
     required this.gameSize,
     required this.dir});
 
@@ -90,8 +88,7 @@ class AlienShip extends BodyComponent {
             w: fireBallW,
             a: alienShipAngle,
             gl: size,
-            //TODO - increase fireball as game time progresses
-            speed: fbSpeed,
+            speed: gfireballspeed,
             originCenter: alienShipPosition)
         );
       }

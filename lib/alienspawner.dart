@@ -9,9 +9,9 @@ class AlienSpawner extends Component with HasGameRef {
   Direction_E dir;
   AlienSpawner({required this.dir});
 
-  double time = 0;
+  double spawntimer = 0.0;
   double spawntime = 0.0;
-  double fireballspeed = fbInitSpeed;
+  double fbspeedtimer = 0.0;
   Random myrnd = Random();
   bool allowSpawn = true;
   late AlienShip theAlienShip;
@@ -25,21 +25,24 @@ class AlienSpawner extends Component with HasGameRef {
   @override
   void update(double dt) {
     super.update(dt);
-    time += dt;
+    spawntimer += dt;
+    fbspeedtimer += dt;
 
-    if (time > spawntime) {
-      time = 0;
+    if (spawntimer > spawntime) {
+      spawntimer = 0;
       spawntime = (myrnd.nextDouble()*5.0);
       if ((children.isEmpty) && (allowSpawn)) {
         theAlienShip = AlienShip(
             size: alienShipSize,
-            //TODO - increase fireball as game time progresses 
-            fbSpeed: fireballspeed,
             gameSize: gameRef.size,
             dir: dir);
         add(theAlienShip);
-        fireballspeed++;
       }
+    }
+
+    if (fbspeedtimer > fbspeedperiod) {
+      fbspeedtimer = 0;
+      gfireballspeed += 0.1;
     }
   }
 
