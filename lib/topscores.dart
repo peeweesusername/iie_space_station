@@ -102,6 +102,15 @@ class TopScores {
     }
   }
 
+  bool ifTopScore(int score) {
+    if (score > _scores[0].score){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   Future<void> addNewScore(int newscore, String newinitials) async {
     _scores.add(Score(newinitials, newscore));
     _scores.sort();

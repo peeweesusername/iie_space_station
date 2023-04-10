@@ -23,7 +23,11 @@ class ScoreComponent extends TextComponent with HasGameRef {
 
   set score(int i) {
     _score = i;
-    if ((game as SpaceStationGame).theTopScores.ifInTopScores(_score)) {
+
+    if ((game as SpaceStationGame).theTopScores.ifTopScore(_score)) {
+      text = 'Your score $_score is the highest!';
+    }
+    else if ((game as SpaceStationGame).theTopScores.ifInTopScores(_score)) {
       text = 'Your score $_score is in the top five!';
     }
     else {
