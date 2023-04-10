@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iie_space_station/spacestationgame.dart';
 
+String initials = '';
+
 Widget gameOverMenuBuilder(BuildContext buildContext, SpaceStationGame game) {
   return Center(
     child: Container(
@@ -30,7 +32,6 @@ Widget gameOverMenuBuilder(BuildContext buildContext, SpaceStationGame game) {
                 },
                 child: const Text('Exit Game', style: TextStyle(fontSize: 24, color: Color(0xFF41FF00)))
             ),
-            //TODO - Add a GestureDetector with onTap to load top scores overlay
           ],
         ),
       ),
@@ -68,7 +69,7 @@ Widget topScoresMenuBuilder(BuildContext buildContext, SpaceStationGame game) {
 }
 
 Widget enterInitialsMenuBuilder(BuildContext buildContext, SpaceStationGame game) {
-  String initials = '';
+
   return Center(
     child: Container(
       color: Colors.transparent,
@@ -96,17 +97,14 @@ Widget enterInitialsMenuBuilder(BuildContext buildContext, SpaceStationGame game
                     labelText: 'Enter your initials',
                     labelStyle: TextStyle(fontSize: 24, color: Color(0xFF41FF00)),
                   ),
-                //onChanged: (text) {
-                //  initials = text;
-                //  print('initials: $initials');
-                //},
                 onSubmitted: (text) {
                   initials = text;
-                  print('initials: $initials');
-                },),),),
+                  },
+                ),
+              ),
+            ),
             GestureDetector(
                 onTap: () async {
-                  print('initials again: $initials');
                   await game.theTopScores.addNewScore(game.theScore.score, initials);
                   await game.theTopScores.saveScores();
                   game.overlays.add('topScores');

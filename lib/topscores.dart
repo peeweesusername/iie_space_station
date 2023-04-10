@@ -103,7 +103,10 @@ class TopScores {
   }
 
   bool ifTopScore(int score) {
-    if (score > _scores[0].score){
+    if (_scores.isEmpty) {
+      return true;
+    }
+    else if (score > _scores[0].score){
       return true;
     }
     else {
