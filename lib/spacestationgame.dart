@@ -51,19 +51,19 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
 
     theStation = BaseStation(
         gameSize: size,
-        radius: baseStationSize
+        radius: gbaseStationSize
     );
     add(theStation);
 
     theFireButtonSprite = FireButtonSprite(
         gameSize: size,
-        radius: fireButtonSize
+        radius: gfireButtonSize
     );
     add(theFireButtonSprite);
 
     theDirectionButtonSprite = DirectionButtonSprite(
         gameSize: size,
-        radius: directionButtonSize
+        radius: gdirectionButtonSize
     );
     add(theDirectionButtonSprite);
 
@@ -122,10 +122,10 @@ class SpaceStationGame extends Forge2DGame with HasTappables  {
   void restartGame() {
     gameIsOver = false;
     theScore.score = 0;
-    gfireballspeed = fbInitSpeed;
+    gfireballspeed = gfbInitSpeed;
     theStation = BaseStation(
         gameSize: size,
-        radius: baseStationSize
+        radius: gbaseStationSize
     );
     add(theStation);
 

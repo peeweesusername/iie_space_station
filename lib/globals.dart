@@ -2,48 +2,48 @@ library iie_space_station.globals;
 
 import 'package:flame/components.dart';
 
-const double baseStationSize = 6.0;
-const double baseStationScale = 2.0;
+const double gbaseStationSize = 6.0;
+const double gbaseStationScale = 2.0;
 
-const double directionButtonSize = 12.0;
-const double fireButtonSize = 12.0;
+const double gdirectionButtonSize = 12.0;
+const double gfireButtonSize = 12.0;
 
-const double laserBoltL = 2.0;
-const double laserBoltW = 1.0;
-const double lbSpeed  = 40.0;
+const double glaserBoltL = 2.0;
+const double glaserBoltW = 1.0;
+const double glbSpeed  = 40.0;
 
-const double alienShipSize = 5.0;
-const double alienShipScale = 2.0;
+const double galienShipSize = 5.0;
+const double galienShipScale = 2.0;
 
-const double fireBallL = 2.0;
-const double fireBallW = 2.0;
-const double fireBallR = 2.0;
-const double fbInitSpeed  = 2.0;
-double gfireballspeed = fbInitSpeed;
-const double fbspeedperiod = 5;
+const double gfireBallL = 2.0;
+const double gfireBallW = 2.0;
+const double gfireBallR = 2.0;
+const double gfbInitSpeed  = 2.0;
+double gfireballspeed = gfbInitSpeed;
+const double gfbspeedperiod = 5;
 
-const double baseStationExplosionSFX = 0.4375;
-const double baseStationExplosionSFY = 0.7778;
-Vector2 baseStationExplosionSF = Vector2(
-    baseStationExplosionSFX,
-    baseStationExplosionSFY
+const double gbaseStationExplosionSFX = 0.4375;
+const double gbaseStationExplosionSFY = 0.7778;
+Vector2 gbaseStationExplosionSF = Vector2(
+    gbaseStationExplosionSFX,
+    gbaseStationExplosionSFY
 );
 
-const double alienShipExplosionSFX = baseStationExplosionSFX/2;
-const double alienShipExplosionSFY = baseStationExplosionSFY/2;
-Vector2 alienShipExplosionSF = Vector2(
-    alienShipExplosionSFX,
-    alienShipExplosionSFY
+const double galienShipExplosionSFX = gbaseStationExplosionSFX/2;
+const double galienShipExplosionSFY = gbaseStationExplosionSFY/2;
+Vector2 galienShipExplosionSF = Vector2(
+    galienShipExplosionSFX,
+    galienShipExplosionSFY
 );
 
-const double missileExplosionSFX = baseStationExplosionSFX/10;
-const double missileExplosionSFY = baseStationExplosionSFY/10;
-Vector2 missileExplosionSF = Vector2(
-    missileExplosionSFX,
-    missileExplosionSFY
+const double gmissileExplosionSFX = gbaseStationExplosionSFX/10;
+const double gmissileExplosionSFY = gbaseStationExplosionSFY/10;
+Vector2 gmissileExplosionSF = Vector2(
+    gmissileExplosionSFX,
+    gmissileExplosionSFY
 );
 
-const int maxNumberScores = 5;
+const int gmaxNumberScores = 5;
 
 
 

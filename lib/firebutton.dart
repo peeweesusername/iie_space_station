@@ -30,8 +30,8 @@ class FireButtonSprite extends SpriteComponent with Tappable, HasGameRef {
     double gunLen = (gameRef as SpaceStationGame).theStation.radius;
     Vector2 c = (gameRef as SpaceStationGame).theStation.center;
     LaserBolt lb = LaserBolt(
-        l: laserBoltL,
-        w: laserBoltW,
+        l: glaserBoltL,
+        w: glaserBoltW,
         a: a,
         gl: gunLen,
         originCenter: c);

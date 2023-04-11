@@ -78,8 +78,8 @@ class TopScores {
 
     _scores.sort();
 
-    if (len > maxNumberScores) {
-      len = maxNumberScores;
+    if (len > gmaxNumberScores) {
+      len = gmaxNumberScores;
     }
 
     for (var i=0; i<len; i++) {
@@ -91,7 +91,7 @@ class TopScores {
   }
 
   bool ifInTopScores(int score) {
-    if (_scores.length < maxNumberScores) {
+    if (_scores.length < gmaxNumberScores) {
       return true;
     }
     else if (score > _scores[_scores.length-1].score){
@@ -117,8 +117,8 @@ class TopScores {
   Future<void> addNewScore(int newscore, String newinitials) async {
     _scores.add(Score(newinitials, newscore));
     _scores.sort();
-    if (_scores.length > maxNumberScores) {
-      _scores.removeRange(maxNumberScores, _scores.length);
+    if (_scores.length > gmaxNumberScores) {
+      _scores.removeRange(gmaxNumberScores, _scores.length);
     }
   }
 

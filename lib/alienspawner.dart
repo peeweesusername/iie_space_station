@@ -33,14 +33,14 @@ class AlienSpawner extends Component with HasGameRef {
       spawntime = (myrnd.nextDouble()*5.0);
       if ((children.isEmpty) && (allowSpawn)) {
         theAlienShip = AlienShip(
-            size: alienShipSize,
+            size: galienShipSize,
             gameSize: gameRef.size,
             dir: dir);
         add(theAlienShip);
       }
     }
 
-    if (fbspeedtimer > fbspeedperiod) {
+    if (fbspeedtimer > gfbspeedperiod) {
       fbspeedtimer = 0;
       gfireballspeed += 0.1;
     }

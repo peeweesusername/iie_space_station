@@ -41,7 +41,7 @@ class AlienShip extends BodyComponent {
     alienShipSprite = SpriteComponent.fromImage(
         alienShipImage,
         anchor: Anchor.center,
-        size: Vector2(size*alienShipScale, size*alienShipScale)
+        size: Vector2(size*galienShipScale, size*galienShipScale)
     );
     add(alienShipSprite);
 
@@ -84,8 +84,8 @@ class AlienShip extends BodyComponent {
         time = 0;
         fireTime = (myRND.nextDouble()*3.0) + 2.0;
         gameRef.add(FireBall(
-            l: fireBallL,
-            w: fireBallW,
+            l: gfireBallL,
+            w: gfireBallW,
             a: alienShipAngle,
             gl: size,
             speed: gfireballspeed,

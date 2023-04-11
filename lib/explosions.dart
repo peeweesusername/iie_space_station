@@ -19,7 +19,7 @@ class BaseStationExplosion extends SpriteAnimationComponent with HasGameRef {
     animation = spriteSheet.createAnimation(row: 0, stepTime: 0.1, to: 20, loop: false);
     position = explosionPosition;
     size = gameRef.size;
-    size.multiply(baseStationExplosionSF);
+    size.multiply(gbaseStationExplosionSF);
     anchor = Anchor.center;
     removeOnFinish = true;
     FlameAudio.play('explosion1.mp3');
@@ -41,7 +41,7 @@ class AlienShipExplosion extends SpriteAnimationComponent with HasGameRef {
     animation = spriteSheet.createAnimation(row: 0, stepTime: 0.05, to: 7, loop: false);
     position = explosionPosition;
     size = gameRef.size;
-    size.multiply(alienShipExplosionSF);
+    size.multiply(galienShipExplosionSF);
     anchor = Anchor.center;
     removeOnFinish = true;
     FlameAudio.play('explosion2.mp3');
@@ -63,7 +63,7 @@ class MissileExplosion extends SpriteAnimationComponent with HasGameRef {
     animation = spriteSheet.createAnimation(row: 0, stepTime: 0.01, to: 20, loop: false);
     position = explosionPosition;
     size = gameRef.size;
-    size.multiply(missileExplosionSF);
+    size.multiply(gmissileExplosionSF);
     anchor = Anchor.center;
     removeOnFinish = true;
     FlameAudio.play('explosion3.mp3');

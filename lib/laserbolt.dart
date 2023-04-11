@@ -50,7 +50,7 @@ class LaserBolt extends BodyComponent {
     final fixtureDef = FixtureDef(shape, density: 1.0, restitution: 0.0, friction: 1.0);
     final bodyDef = BodyDef(
         position: laserBoltPosition,
-        linearVelocity: Vector2(lbSpeed*math.cos(angle), lbSpeed*math.sin(angle)),
+        linearVelocity: Vector2(glbSpeed*math.cos(angle), glbSpeed*math.sin(angle)),
         angle: angle,
         angularVelocity: 0,
         type: BodyType.dynamic,

@@ -25,7 +25,7 @@ class BaseStation extends BodyComponent {
     baseStationSprite = SpriteComponent.fromImage(
         baseStationImage,
         anchor: Anchor.center,
-        size: Vector2(radius*baseStationScale, radius*baseStationScale),
+        size: Vector2(radius*gbaseStationScale, radius*gbaseStationScale),
       );
     add(baseStationSprite);
 
